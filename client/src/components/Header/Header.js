@@ -15,6 +15,7 @@ function Header() {
   const changeLanguage = (lng) => {
     return () => {
       i18n.changeLanguage(lng);
+      localStorage.setItem("language", lng);
     }
   }
   return (
@@ -55,9 +56,19 @@ function Header() {
               {t("logout")}
               </NavDropdown.Item>
             </NavDropdown>
-            <button onClick={changeLanguage('eng')}>English</button>
-            <button onClick={changeLanguage('ru')}>Русский</button>
+            <NavDropdown
+              title={localStorage.getItem("language") === "ru" ? "RUS" : "ENG"}
+              id="navbarScrollingDropdown"
+            >
+              <NavDropdown.Item onClick={changeLanguage("en")}>
+                English
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={changeLanguage("ru")}>
+                Русский
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
+          
           <Form className="d-flex">
             <Form.Control
               type="search"
