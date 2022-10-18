@@ -7,15 +7,22 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from 'react-i18next';
 import './Header.scss';
 
 function Header() {
+  const {t, i18n} = useTranslation();
+  const changeLanguage = (lng) => {
+    return () => {
+      i18n.changeLanguage(lng);
+    }
+  }
   return (
     <Navbar 
       variant="dark" 
       bg="dark" 
       expand="lg">
-      <Container fluid >
+      <Container fluid>
         <Navbar.Brand 
           href="/" 
           className='logo'>
@@ -28,37 +35,39 @@ function Header() {
           <Nav
             className="me-auto my-2 my-lg-0 center">
             <Nav.Link href="/">
-              Home
+              {t("home")}
             </Nav.Link>
             <Nav.Link href="/profile">
-              Profile
+              {t("profile")}
               <FontAwesomeIcon icon={faUser} 
                 className='ms-1'/>
             </Nav.Link>
-            <NavDropdown title="Account" 
+            <NavDropdown title={t("account")}
               id="navbarScrollingDropdown">
               <NavDropdown.Item href="/login">
-                Login
+              {t("login")}
               </NavDropdown.Item>
               <NavDropdown.Item href="/signup">
-                Sign Up
+                {t('sign')}
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item className="delete">
-                Log out
+              {t("logout")}
               </NavDropdown.Item>
             </NavDropdown>
+            <button onClick={changeLanguage('eng')}>English</button>
+            <button onClick={changeLanguage('ru')}>Русский</button>
           </Nav>
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder={t("search")}
               className="me-2 search"
               aria-label="Search"
             />
             <Button 
               variant="outline-success">
-                Search
+                {t("search")}
             </Button>
           </Form>
         </Navbar.Collapse>
