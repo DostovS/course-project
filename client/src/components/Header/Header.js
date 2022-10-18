@@ -5,12 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import { useTranslation } from 'react-i18next';
 import './Header.scss';
 
-function Header() {
+function Header({themeToggler,theme}) {
   const {t, i18n} = useTranslation();
   const changeLanguage = (lng) => {
     return () => {
@@ -40,8 +40,6 @@ function Header() {
             </Nav.Link>
             <Nav.Link href="/profile">
               {t("profile")}
-              <FontAwesomeIcon icon={faUser} 
-                className='ms-1'/>
             </Nav.Link>
             <NavDropdown title={t("account")}
               id="navbarScrollingDropdown">
@@ -52,8 +50,9 @@ function Header() {
                 {t('sign')}
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item className="delete">
-              {t("logout")}
+              <NavDropdown.Item className="delete"
+                style={{"color": 'red'}}>
+                {t("logout")}
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown
@@ -61,12 +60,22 @@ function Header() {
               id="navbarScrollingDropdown"
             >
               <NavDropdown.Item onClick={changeLanguage("en")}>
-                English
+                English 
               </NavDropdown.Item>
               <NavDropdown.Item onClick={changeLanguage("ru")}>
                 Русский
               </NavDropdown.Item>
             </NavDropdown>
+            <i 
+              className='theme'
+              onClick={themeToggler}>
+              {theme === "light" ? (
+                <Brightness4Icon />
+              ) : null}
+              {theme === "dark" ? (
+                <WbSunnyIcon />
+              ) : null}
+            </i>
           </Nav>
           
           <Form className="d-flex">

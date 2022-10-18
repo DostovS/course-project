@@ -9,9 +9,29 @@
 .center {
   justify-content: center;
   align-items: center;
+  font-size: 1.1rem;
 }
 .container-fluid {
   padding: .5rem 0;
+}
+.theme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  svg {
+    color: #fff;
+    font-size: 2rem;
+    animation: theme 3s linear infinite;
+  }
+}
+@keyframes theme {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 @media screen and (max-width: 991px) {
   .search {
