@@ -79,7 +79,7 @@ function Header({themeToggler,theme}) {
           </Nav>
           
           <Form className="d-flex">
-            <Form.Control
+          <Form.Control
               type="search"
               placeholder={t("search")}
               className="me-2 search"
