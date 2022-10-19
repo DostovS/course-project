@@ -22,7 +22,8 @@ function Header({themeToggler,theme}) {
     <Navbar 
       variant="dark" 
       bg="dark" 
-      expand="lg">
+      expand="lg"
+      className='header'>
       <Container fluid>
         <Navbar.Brand 
           href="/" 
@@ -50,8 +51,7 @@ function Header({themeToggler,theme}) {
                 {t('sign')}
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item className="delete"
-                style={{"color": 'red'}}>
+              <NavDropdown.Item style={{"color": 'red'}}>
                 {t("logout")}
               </NavDropdown.Item>
             </NavDropdown>

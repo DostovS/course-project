@@ -1,6 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');.menu {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+
+.menu {
   color: white;
-  font-size: 1.5rem;}
+  font-size: 1.5rem;
+}
 .logo {
   font-size: 1.2rem;
   font-weight: bold;
@@ -24,6 +27,9 @@
     font-size: 2rem;
     animation: theme 3s linear infinite;
   }
+}
+.delete {
+  color: red;
 }
 @keyframes theme {
   from {
