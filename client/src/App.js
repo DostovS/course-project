@@ -7,6 +7,8 @@ import { lightTheme, darkTheme } from "./components/UI/Theme";
 import './App.scss'; 
 import StartPage from './pages/StartPage/StartPage';
 import { LoaderComponent } from './components/UI/SiteLoader';
+import { Route, Routes } from 'react-router-dom';
+import LoginPage from './pages/LoginPage/LoginPage';
 function App() {
   const[loading, setLoading] = useState(false);
   useEffect(()=>{
@@ -28,7 +30,10 @@ function App() {
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
           <GlobalStyles/>
           <Header themeToggler={themeToggler} theme={theme}/>
-          <StartPage />
+          <Routes>
+            <Route path='/' element={ <StartPage /> } />
+            <Route path='/login' element={ <LoginPage /> } />
+          </Routes>
         </ThemeProvider>
       }
     </>

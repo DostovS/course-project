@@ -19,7 +19,7 @@ export default function StartPage() {
               <p>
                 {t("about")}
               </p>
-              <Link to="/login" className="btn btn-primary">
+              <Link to="/login"  className="btn btn-primary">
                 {t("getstart")}
               </Link>
             </div>
