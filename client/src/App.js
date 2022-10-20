@@ -9,6 +9,7 @@ import StartPage from './pages/StartPage/StartPage';
 import { LoaderComponent } from './components/UI/SiteLoader';
 import { Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
+import SignUp from './pages/SignUpPage/SignUp';
 function App() {
   const[loading, setLoading] = useState(false);
   useEffect(()=>{
@@ -33,6 +34,7 @@ function App() {
           <Routes>
             <Route path='/' element={ <StartPage /> } />
             <Route path='/login' element={ <LoginPage /> } />
+            <Route path='/signup' element={ <SignUp /> } />
           </Routes>
         </ThemeProvider>
       }
