@@ -23,3 +23,10 @@ body {
 button {
   margin: 0.5rem 0;
 }
+.site-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background-color: red;
+}

@@ -22,16 +22,15 @@ function App() {
   }
   return (
     <>
-        {
-      loading ? 
-      <LoaderComponent /> 
-      :
-      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <GlobalStyles/>
-      <Header themeToggler={themeToggler} theme={theme}/>
-      <StartPage />
-    </ThemeProvider>
-    }
+      {
+        loading ? 
+        <LoaderComponent /> :
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+          <GlobalStyles/>
+          <Header themeToggler={themeToggler} theme={theme}/>
+          <StartPage />
+        </ThemeProvider>
+      }
     </>
 
   );
