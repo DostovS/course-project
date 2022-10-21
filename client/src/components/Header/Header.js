@@ -18,6 +18,12 @@ function Header({themeToggler,theme}) {
       localStorage.setItem("language", lng);
     }
   }
+
+  const logOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("currentUser");
+    window.location.reload();
+  };
   return (
     <Navbar 
       variant="dark" 
@@ -51,7 +57,8 @@ function Header({themeToggler,theme}) {
                 {t('sign')}
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item style={{"color": 'red'}}>
+              <NavDropdown.Item style={{"color": 'red'}}
+                onClick={logOut}>
                 {t("logout")}
               </NavDropdown.Item>
             </NavDropdown>
