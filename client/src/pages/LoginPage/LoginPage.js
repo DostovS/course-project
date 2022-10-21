@@ -1,26 +1,31 @@
 import React, { useRef } from 'react';
 import BaseCard from '../../components/UI/BaseCard/BaseCard';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import axios from '../../plugins/axios';
+
 export default function LoginPage() {
+  const { t } = useTranslation();
   const inputEmail = useRef();
   const inputPassword = useRef();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const email = inputEmail.current.value.toLowerCase();
     const enteredPassword = inputPassword.current.value;
     if (email.trim().length === 0) {
-      alert("email noto'gri");
+      alert(t("email-error"));
       return false;
     }
     if (enteredPassword.trim().length === 0 || enteredPassword.length < 4) {
-      alert('Parol qisqa');
+      alert(t("login-password"));
       return false;
     }
     const loginData = {
       email: email,
       password: enteredPassword,
     };
+
     try {
       const res = await axios.post("user/login", loginData);
       localStorage.setItem("token", res.data.token);
@@ -28,7 +33,7 @@ export default function LoginPage() {
       window.location.href = "/";
     } catch (err) {
       console.log(err);
-      alert("Please check your username and password");
+      alert(t("not-found"));
       return false;
     }
   };
@@ -38,23 +43,23 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit}>
             <h2>Login</h2>
             <p>
-              Don't have an account? {" "} 
-              <Link to="/signup">Sign up</Link>
+              {t("login-dont-have-account")} {" "} 
+              <Link to="/signup">{t("login-signup")}</Link>
             </p>
             <div className="mb-3">
-            <label htmlFor="email" className="label">
-              Email
-            </label>
-            <input
-              className="form-control input"
-              type="text"
-              placeholder="your-email@gmail.com"
-              ref={inputEmail}
-              required
-            />
+              <label htmlFor="email" className="label">
+                {t("login-email")}
+              </label>
+              <input
+                className="form-control input"
+                type="text"
+                placeholder="your-email@gmail.com"
+                ref={inputEmail}
+                required
+              />
             </div>
             <div className="mb-3">
-              <label htmlFor="password">Your password</label>
+              <label htmlFor="password">{t("login-pass")}</label>
               <input
                 className="form-control input"
                 placeholder="password123"
@@ -69,12 +74,11 @@ export default function LoginPage() {
                 type="submit"
                 to="/"
                 onClick={handleSubmit}>
-                Submit
+                {t("login-submit")}
               </button>
             </div>
           </form>
         </BaseCard>
     </section>
-    
   )
 }

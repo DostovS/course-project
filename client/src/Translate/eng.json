@@ -7,5 +7,13 @@
   "logout": "Log out",
   "search": "Search",
   "about": "Announce is a platform specifically designed for you to sell your items.You can also buy the products you like.Everything is easy with Announce!",
-  "getstart": "Let's get started!"
+  "getstart": "Let's get started!",
+  "email-error": "This email has not been registered before",
+  "not-found": "Please check your username and password",
+  "login-password": "password less than 4 letters",
+  "login-dont-have-account": "Don't have an account?",
+  "login-signup": "Sign up",
+  "login-email": "Email",
+  "login-pass": "Password",
+  "login-submit": "Submit"
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import BaseCard from '../../components/UI/BaseCard/BaseCard';
 import axios from "../../plugins/axios";
 let userExists = false;
+
 export default function SignUp() {
   const inputUsername = useRef();
   const inputPassword = useRef();
@@ -12,7 +13,6 @@ export default function SignUp() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     const enteredEmail = inputEmail.current.value.toLowerCase();
     const enteredUsername = inputUsername.current.value.toLowerCase();
     const enteredPassword = inputPassword.current.value;
@@ -46,6 +46,7 @@ export default function SignUp() {
       password: enteredPassword,
       email: enteredEmail,
     };
+
     try {
       await axios.post("user/registration", userData);
       alert("sign up created");
@@ -63,6 +64,7 @@ export default function SignUp() {
       return false;
     }
   }
+
   return (
     <section className='form'>
       <div className="container">
@@ -84,7 +86,9 @@ export default function SignUp() {
               />
             </div>
             <div className="formItem">
-              <label htmlFor="lastName">Lastname</label>
+              <label htmlFor="lastName">
+                Lastname
+              </label>
               <input
                 type="test"
                 className="form-control input"
@@ -94,7 +98,9 @@ export default function SignUp() {
               />
             </div>
             <div className="formItem">
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">
+                Username
+              </label>
               <input
                 type="text"
                 className="form-control input"
@@ -104,7 +110,9 @@ export default function SignUp() {
               />
             </div>
             <div className="formItem">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">
+                Email
+              </label>
               <input
                 type="email"
                 className="form-control input"
@@ -113,7 +121,9 @@ export default function SignUp() {
               />
             </div>
             <div className="formItem">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">
+                Password
+              </label>
               <input
                 className="form-control input"
                 type="password"
@@ -123,12 +133,14 @@ export default function SignUp() {
               />
             </div>
             <div>
-              <button className="btn btn-success">Submit</button>
+              <button className="btn btn-success">
+                Submit
+              </button>
             </div>
           </form>
           {userExists ? (
             <div>
-            <p>signup-redirect</p>
+              <p>signup-redirect</p>
             </div>
           ) : null}
         </BaseCard>
