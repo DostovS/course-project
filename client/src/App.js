@@ -10,6 +10,7 @@ import { LoaderComponent } from './components/UI/SiteLoader';
 import { Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignUp from './pages/SignUpPage/SignUp';
+import NotFound from './pages/NotFound';
 function App() {
   const[loading, setLoading] = useState(false);
   useEffect(()=>{
@@ -35,6 +36,7 @@ function App() {
             <Route path='/' element={ <StartPage /> } />
             <Route path='/login' element={ <LoginPage /> } />
             <Route path='/signup' element={ <SignUp /> } />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </ThemeProvider>
       }

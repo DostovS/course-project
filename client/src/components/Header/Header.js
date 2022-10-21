@@ -54,11 +54,11 @@ function Header({themeToggler,theme}) {
               {t("login")}
               </NavDropdown.Item>
               <NavDropdown.Item href="/signup">
-                {t('sign')}
+                {t('sign')} 
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item style={{"color": 'red'}}
-                onClick={logOut}>
+                onClick={logOut}>          
                 {t("logout")}
               </NavDropdown.Item>
             </NavDropdown>
