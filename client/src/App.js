@@ -11,6 +11,7 @@ import { Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignUp from './pages/SignUpPage/SignUp';
 import NotFound from './pages/NotFound';
+import HomePage from './pages/HomePage';
 function App() {
   const[loading, setLoading] = useState(false);
   useEffect(()=>{
@@ -33,7 +34,12 @@ function App() {
           <GlobalStyles/>
           <Header themeToggler={themeToggler} theme={theme}/>
           <Routes>
-            <Route path='/' element={ <StartPage /> } />
+
+            {localStorage.getItem("currentUser") ? (
+              <Route path="/" element={ <HomePage /> } />
+            ) : (
+              <Route path="/" element={ <StartPage /> } />
+            )}
             <Route path='/login' element={ <LoginPage /> } />
             <Route path='/signup' element={ <SignUp /> } />
             <Route path="*" element={<NotFound />} />
