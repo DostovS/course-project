@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import BaseCard from '../../components/UI/BaseCard/BaseCard';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import BaseCard from '../../components/UI/BaseCard/BaseCard';
 import axios from '../../plugins/axios';
 
 export default function LoginPage() {
@@ -17,7 +17,8 @@ export default function LoginPage() {
       alert(t("email-error"));
       return false;
     }
-    if (enteredPassword.trim().length === 0 || enteredPassword.length < 4) {
+    if (enteredPassword.trim().length === 0 || 
+      enteredPassword.length < 4) {
       alert(t("login-password"));
       return false;
     }
@@ -59,7 +60,9 @@ export default function LoginPage() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="password">{t("login-pass")}</label>
+              <label htmlFor="password">
+                {t("login-pass")}
+              </label>
               <input
                 className="form-control input"
                 placeholder="password123"
