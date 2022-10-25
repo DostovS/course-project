@@ -4,14 +4,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {ThemeProvider} from "styled-components";
 import { GlobalStyles } from "./components/UI/Theme"; 
 import { lightTheme, darkTheme } from "./components/UI/Theme";
-import './App.scss'; 
-import StartPage from './pages/StartPage/StartPage';
-import { LoaderComponent } from './components/UI/SiteLoader';
+import  { LoaderComponent } from './components/UI/SiteLoader';
 import { Route, Routes } from 'react-router-dom';
+import StartPage from './pages/StartPage/StartPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignUp from './pages/SignUpPage/SignUp';
 import NotFound from './pages/NotFound';
 import HomePage from './pages/HomePage';
+import ProfilePage from './pages/ProfilePage';
+import './App.scss'; 
 function App() {
   const[loading, setLoading] = useState(false);
   useEffect(()=>{
@@ -33,16 +34,16 @@ function App() {
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
           <GlobalStyles/>
           <Header themeToggler={themeToggler} theme={theme}/>
-          <Routes>
-
+          <Routes>  
             {localStorage.getItem("currentUser") ? (
               <Route path="/" element={ <HomePage /> } />
             ) : (
               <Route path="/" element={ <StartPage /> } />
             )}
+            <Route path="*" element={<NotFound />} />
             <Route path='/login' element={ <LoginPage /> } />
             <Route path='/signup' element={ <SignUp /> } />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/profile" element={<ProfilePage />} />
           </Routes>
         </ThemeProvider>
       }

@@ -37,7 +37,7 @@ button {
   border-radius: 20px;
   border-width: 2px;
   border-color: #C2CAD2;
-  background-color: inherit;
+  
   animation: fadeUp 0.8s ease-out;
 }
 /* Login Page style start */
@@ -68,3 +68,17 @@ button {
   }
 }
 /* Login Page style end */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

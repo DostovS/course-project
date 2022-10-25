@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <section className='container'>
       <h1 className='text-center'
-        style={{"margin-top": "2rem"}}>
+        style={{"marginTop": "2rem"}}>
         Welcome,
         <span>
           {currentUser.name}
