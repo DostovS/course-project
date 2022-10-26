@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import BaseCard from "./UI/BaseCard";
-
+import BaseCard from "../UI/BaseCard/BaseCard";
 export default function Collection(props) {
   return (
     <>
@@ -12,7 +11,7 @@ export default function Collection(props) {
         <div className="action">
           <Link to="/" className="btn btn-primary">
             Open Items List
-          </Link>
+          </Link> 
           <button className="btn btn-danger">Delete Collection</button>
         </div>
       </BaseCard>

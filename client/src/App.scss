@@ -46,9 +46,10 @@ button {
 /* Login Page style start */
 .form {
   width: 50%;
-  height: 87vh;
+  height: 100vh;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   .card {
