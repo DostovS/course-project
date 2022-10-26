@@ -1,6 +1,7 @@
 const Router = require("express");
 const router = new Router();
 const authController = require("./controller/authController");
+const collectionsController = require("./controller/collectionsController");
 
 //Auth routes
 router.post("/user/registration", authController.registration);
@@ -13,7 +14,15 @@ router.put("/user/:id/change-status", authController.changeStatus);
 router.delete("/user/:id/delete", authController.deleteUser);
 
 //Collection router
-router.post('/create-collection', collectionsController.create)
-router.get('/get-collection/:id', collectionsController.getCollection)
-router.get('/get-all-collections', collectionsController.getAllCollections)
+router.post("/collection/create", collectionsController.create);
+router.get("/feed/collection", collectionsController.getBiggestCollections);
+router.get("/collection/:id", collectionsController.getCollection);
+router.get("/collection", collectionsController.getAllCollections);
+router.get(
+  "/collection/length/:id",
+  collectionsController.getCollectionsLength
+);
+router.get("/collection/user/:id", collectionsController.getUserCollections);
+router.put("/update/collection/:id", collectionsController.updateCollection);
+router.delete("/delete/collection/:id", collectionsController.deleteCollection);
 module.exports = router;
