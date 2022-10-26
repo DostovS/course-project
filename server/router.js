@@ -12,4 +12,8 @@ router.post("/user", authController.getUserByUsername);
 router.put("/user/:id/change-status", authController.changeStatus);
 router.delete("/user/:id/delete", authController.deleteUser);
 
+//Collection router
+router.post('/create-collection', collectionsController.create)
+router.get('/get-collection/:id', collectionsController.getCollection)
+router.get('/get-all-collections', collectionsController.getAllCollections)
 module.exports = router;
