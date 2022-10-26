@@ -10,9 +10,6 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.cardText};
     transition: all 0.50s linear;
   }
-  tbody {
-    color: ${({ theme }) => theme.bodyText};
-  }
   `
 export const lightTheme = {
   body: '#F4F9FF',

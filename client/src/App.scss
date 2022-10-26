@@ -82,3 +82,13 @@ button {
     transform: translateY(0);
   }
 }
+table {
+  width: 90%;
+  margin: 0 auto;
+}
+tr {
+  border-bottom: 1px solid rgb(141, 135, 135);
+}
+td {
+  padding: 0.3rem 0;
+}

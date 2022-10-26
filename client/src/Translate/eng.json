@@ -34,5 +34,8 @@
   "password": "Password",
   "your-password": "Your password",
   "signup-submit": "Submit",
-  "signup-redirect": "Sign up redirect"
+  "signup-redirect": "Sign up redirect",
+  "make-admin": "Make admin",
+  "remove-admin": "Remove admin",
+  "delete-user": "Delete user"
 }
