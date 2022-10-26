@@ -42,7 +42,7 @@ export default function User(props) {
         <div className="user-controls">
           <h2 className="page-title">{t("user-profile")}</h2>
           {user.username === currentUser.username ||
-          currentUser.role === "admin" ? (
+            currentUser.role === "admin" ? (
             <UserControls
               user={user}
               onReload={refreshUser}
@@ -92,7 +92,7 @@ export default function User(props) {
                   <span>
                     {user.role}
                     <FontAwesomeIcon icon={faUser} className="span-margin" />
-                  </span>
+                  </span> 
                 )}
               </td>
             </tr>

@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
+* {
+  box-sizing: border-box;
+}
 html {
   scroll-behavior: smooth;
   transition: all 0.3s ease-out;
@@ -85,10 +88,20 @@ button {
 table {
   width: 90%;
   margin: 0 auto;
+  border-radius: 1rem;
 }
 tr {
   border-bottom: 1px solid rgb(141, 135, 135);
 }
 td {
-  padding: 0.3rem 0;
+  padding: 0.4rem 0;
+}
+.user-controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-controls h2 {
+  margin: 0;
 }

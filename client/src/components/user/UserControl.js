@@ -16,7 +16,7 @@ export default function UserControls(props) {
     props.onStatusLoaderOn();
     await axios
       .put(`user/${props.user._id}/change-status`, { role: status })
-      .then(() => {
+      .then(() => { 
         refresh();
         props.onStatusLoaderOff();
         window.location.reload();
