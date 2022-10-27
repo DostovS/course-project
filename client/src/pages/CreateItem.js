@@ -13,14 +13,13 @@ export default function CreateItemPage() {
   const navigate = useNavigate();
   const [imageUpload, setImageUpload] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(false);
+  //   const [imageTitle, setImageTitle] = useState("");
   const [price, setPrice] = useState(false);
   const [year, setYear] = useState(false);
   const [from, setFrom] = useState(false);
   const [link, setLink] = useState(false);
-
   const [tag, setTag] = useState("");
   const [tags, setTags] = useState([]);
-
   const nameRef = useRef("");
   const descriptionRef = useRef("");
   const priceRef = useRef("");
@@ -28,7 +27,6 @@ export default function CreateItemPage() {
   const fromRef = useRef("");
   const linkRef = useRef("");
   const tagInput = useRef("");
-
   let { username, collectionID } = useParams();
   const additionalFields = (
     <div>
@@ -87,10 +85,11 @@ export default function CreateItemPage() {
     const yearInput = yearRef.current.value;
     const fromInput = fromRef.current.value;
     const linkInput = linkRef.current.value;
-
-  
+    // if (nameInput.trim === "") {
+    //   alert("Name Field cannot be empty! Please, check your input");
+    //   return false;
+    // }
     const randomImagetitle = v4();
-
     const data = {
       username: username,
       collectionID: collectionID,
@@ -106,7 +105,6 @@ export default function CreateItemPage() {
     };
     try {
       //   console.log(data);
-
       await axios
         .post(`item/create/:${username}/${collectionID}`, data)
         .then(() => {
@@ -127,11 +125,11 @@ export default function CreateItemPage() {
     } catch (err) {
       alert("Something went wrong");
       console.error(err);
-
       return false;
     }
   };
-  function addTag() {
+  function addTag(e) {
+    e.preventDefault();
     if (tagInput.current.value === "") {
       alert("Tag Field cannot be empty! Please, check your input");
       return false;
@@ -144,13 +142,12 @@ export default function CreateItemPage() {
     tagInput.current.value = "";
     console.log(tags);
   }
+
   function removeTag(id) {
     setTags(tags.filter((tag) => tag.id !== id));
   }
-
   return (
     <div className='container'>
-      <Link to=""></Link>
       <Link to="" className="link-back" onClick={() => navigate(-1)}>
         <FontAwesomeIcon icon={faLeftLong} /> Go Back
       </Link>
@@ -161,7 +158,7 @@ export default function CreateItemPage() {
           }}
         >
           <h2>Create Item</h2>
-          <div className="form-item">
+          <div className="form-tem">
             <br />
             <label className="form-label" htmlFor="name" required>
               Name
@@ -177,8 +174,8 @@ export default function CreateItemPage() {
               name="description"
               rows="3"
               className="form-control"
-              ref={descriptionRef}>
-            </textarea>
+              ref={descriptionRef}
+            ></textarea>
           </div>
           <div className="form-item">
             <br />
@@ -210,7 +207,9 @@ export default function CreateItemPage() {
                 />
                 <button
                   className="btn btn-secondary btn-inline"
-                  onClick={addTag}
+                  onClick={(e) => {
+                    addTag(e);
+                  }}
                 >
                   Add tag
                 </button>
@@ -254,7 +253,7 @@ export default function CreateItemPage() {
                     Remove Input
                   </button>
                 </div>
-              </div> 
+              </div>
             ) : null}
             {year ? (
               <div className="form-tem">
@@ -329,7 +328,6 @@ export default function CreateItemPage() {
           <button className="btn btn-success btn-submit" type="submit">
             Submit
           </button>
-          
         </form>
       </BaseCard>
     </div>
