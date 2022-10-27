@@ -1,8 +1,6 @@
 import React from "react";
 import User from "../components/user/User";
 import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import axios from "../plugins/axios";
 import Collection from "../components/Collection/Collection";
 
@@ -19,13 +17,12 @@ export default function ProfilePage() {
     <div className="container">
       <Link to="/" className="link-back" 
         onClick={() => navigate(-1)}>
-        <FontAwesomeIcon icon={faLeftLong} /> 
-        Go back
+         Go back
       </Link>
       <div className="form">
         <User username={currentUser.username} />
         <Collection />
-      </div>
+      </div> 
       
     </div>
   );
