@@ -4,9 +4,9 @@ export default function Collection(props) {
   return (
     <>
       <BaseCard>
-        <h3>props.title</h3>
-        <Link to="/">props.username</Link>
-        <p>Description: props.description</p>
+        <h3>{props.title}</h3>
+        <Link to="/">{props.username}</Link>
+        <p>Description: {props.description}</p>
         <p>Number of Items: 12 items</p>
         <div className="action">
           <Link to="/" className="btn btn-primary">

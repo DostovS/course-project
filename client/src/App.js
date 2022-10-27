@@ -14,6 +14,7 @@ import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import './App.scss'; 
 import CreateItemPage from './pages/CreateItem';
+import Item from './components/Item/Item';
 function App() {
   const[loading, setLoading] = useState(false);
   useEffect(()=>{
@@ -45,7 +46,20 @@ function App() {
             <Route path='/login' element={ <LoginPage /> } />
             <Route path='/signup' element={ <SignUp /> } />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/create" element={ <CreateItemPage /> } />
+            <Route path="/item">
+              <Route path="/item" element={<Item />} />
+            </Route>
+            <Route path="/user/:username">
+              <Route
+              path="/user/:username/:collectionID"
+              element={<CreateItemPage />}
+              >
+              <Route
+                path="/user/:username/:collectionID/create"
+                element={<CreateItemPage />}
+              />
+            </Route>
+            </Route>
           </Routes>
         </ThemeProvider>
       }
