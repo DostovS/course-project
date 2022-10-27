@@ -1,10 +1,9 @@
 import BaseCard from "../UI/BaseCard/BaseCard";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-export default function Item() {
+import image from '../../assets/home-office-g9d66758a3_1920.jpg';
+export default function Item(props) {
   const [liked, setLiked] = useState(false);
-
-
   const toggleLike = () => {
     setLiked(!liked);
   };
@@ -13,26 +12,30 @@ export default function Item() {
       <BaseCard>
         <div className="flexcontainer">
           <div className="image">
-            <img src="" alt="" />
+            <img src={image} alt="" />
             </div>
           <div>
-            <h3>Motherfucker Bruh</h3>
-            <Link className="italic username" to="/">
-              @username
+          <h3>{props.item.name}</h3>
+            <Link
+              className="italic username"
+              to={`/user/${props.item.username}`}
+            >
+              @{props.item.username}
             </Link>
             <ul>
-              <li>
-                Here is the description of an item that no one gives a fuck of
-                its presence
-              </li>
-              <li>Price: $978.99</li>
-              <li>Year: 2002</li>
-              <li>From: Uzbekistan</li>
+              <li>{props.item.description}</li>
+              <li>Price: ${props.item.price}</li>
+              <li>Year: {props.item.year}</li>
+              <li>From: {props.item.from}</li>
             </ul>
             <div className="tags">
-              <span className="tag">dev</span>
-              <span className="tag">fullstack</span>
-              <span className="tag">web</span>
+              {props.item.tags.map((tag) => {
+                  return (
+                    <span className="tag" key={tag.id}>
+                      {tag.tag}
+                    </span>
+                  );
+                })}
             </div>
             <div className="likes">
               <div className="like">

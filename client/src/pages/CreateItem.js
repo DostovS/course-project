@@ -254,7 +254,7 @@ export default function CreateItemPage() {
                     Remove Input
                   </button>
                 </div>
-              </div>
+              </div> 
             ) : null}
             {year ? (
               <div className="form-tem">

@@ -15,6 +15,7 @@ import ProfilePage from './pages/ProfilePage';
 import './App.scss'; 
 import CreateItemPage from './pages/CreateItem';
 import Item from './components/Item/Item';
+import UserPage from './pages/UserPage';
 function App() {
   const[loading, setLoading] = useState(false);
   useEffect(()=>{
@@ -48,7 +49,16 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/item">
               <Route path="/item" element={<Item />} />
-              <Route path="/item/create/:username" element={<CreateItemPage />} />
+            </Route>
+            <Route path="/user/:username" element={<UserPage /> }/>
+            <Route path="/user/:username">
+            <Route
+              path="/user/:username/:collectionID"
+              element={<CreateItemPage />}>
+              <Route
+                path="/user/:username/:collectionID/create"
+                element={<CreateItemPage />}/>
+            </Route>
             </Route>
           </Routes>
         </ThemeProvider>
