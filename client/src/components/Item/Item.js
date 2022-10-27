@@ -1,7 +1,6 @@
-import BaseCard from "./UI/BaseCard/BaseCard";
+import BaseCard from "../UI/BaseCard/BaseCard";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import image from 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.citypng.com%2Fphoto%2F21603%2Fpng-shop-market-round-vector-icon&psig=AOvVaw2l3i_RWmD0dqbm6NUYYv5f&ust=1666950003916000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCIiWyumOgPsCFQAAAAAdAAAAABAE'
 export default function Item() {
   const [liked, setLiked] = useState(false);
 
@@ -14,7 +13,7 @@ export default function Item() {
       <BaseCard>
         <div className="flexcontainer">
           <div className="image">
-            <img src={image} alt="" />
+            <img src="" alt="" />
             </div>
           <div>
             <h3>Motherfucker Bruh</h3>

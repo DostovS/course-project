@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Modal from "./UI/Modal";
-import Backdrop from "./UI/Backdrop"
+import Modal from "../UI/Modal";
+import Backdrop from "../UI/Backdrop"
 import BaseCard from "../UI/BaseCard/BaseCard";
 export default function Collection(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
