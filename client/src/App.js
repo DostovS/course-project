@@ -48,17 +48,7 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/item">
               <Route path="/item" element={<Item />} />
-            </Route>
-            <Route path="/user/:username">
-              <Route
-              path="/user/:username/:collectionID"
-              element={<CreateItemPage />}
-              >
-              <Route
-                path="/user/:username/:collectionID/create"
-                element={<CreateItemPage />}
-              />
-            </Route>
+              <Route path="/item/create/:username" element={<CreateItemPage />} />
             </Route>
           </Routes>
         </ThemeProvider>

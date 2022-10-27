@@ -3,24 +3,26 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "../plugins/axios";
 import User from "../components/user/User";
 import Collection from "../components/Collection/Collection";
+import Loader from '../components/UI/Loader';
 
 export default function ProfilePage() {
   const [collections, setCollections] = useState([]);
   let refreshRate = 0;
   const navigate = useNavigate();
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  console.log(currentUser._id);
+  console.log(currentUser.username);
 
   setInterval(function () {
     refreshRate++;
-    console.log(refreshRate);
-  }, 2000);
+  }, 5000);
 
   useEffect(() => {
     async function fetchCollections() {
-      const res = await axios.get(`collection/${currentUser.username}`);
-      console.log(res);
-      setCollections(res);
+      const res = await axios.get(
+        `collection/?username=${currentUser.username}`
+      );
+      console.log(res.data);
+      setCollections(res.data);
     }
     fetchCollections();
   }, [refreshRate]);
@@ -32,10 +34,13 @@ export default function ProfilePage() {
          Go back
       </Link>
       <div className="form">
-        <User username={currentUser.username} />
-        <h2>Collections</h2>
+        <User user={currentUser.username} />
+        <h2 className="page-title">Collections</h2>
+        {collections.length === 0 ? (
+          <Loader />
+        ) : null}
         {collections.map((col) => (
-          <Collection />
+          <Collection collection={col} key={col._id} />
         ))}
       </div> 
       
