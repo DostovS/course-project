@@ -2,40 +2,54 @@
   display: flex;
   width: 100%;
   margin: auto;
+  .image {
+    margin: auto;
+  }
+  img {
+    border-radius: 30px;
+    object-fit: cover;
+  }
+  .btn-like {
+    width: 150px;
+    background-color: rgb(229, 229, 229);
+    margin-right: 10px;
+  }
+  .btn-like:hover {
+    background-color: red;
+    color: rgb(255, 255, 255);
+  }
+  .username {
+    text-decoration: none;
+    color: rgb(0, 72, 226);
+  }
 }
-.flexcontainer .image {
-  margin: auto;
-}
-.flexcontainer img {
-  border-radius: 30px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.flexcontainer .btn-like {
-  width: 150px;
-  background-color: rgb(229, 229, 229);
-  margin-right: 10px;
-}
-.flexcontainer .btn-like:hover {
-  background-color: red;
-  color: rgb(255, 255, 255);
-}
-.flexcontainer .username {
-  text-decoration: none;
-  color: rgb(0, 72, 226);
-}
-
 .likes {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  .liked-by{
+    margin-left: 10px;
+  }
+  .underline{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .heart-icon{
+    color: red;
+  }
+  .heart-icon-crack{
+    color: rgb(121, 121, 121);
+  }
 }
-.likes .liked-by {
-  margin-left: 10px;
-}
-.likes .underline {
-  text-decoration: underline;
-  cursor: pointer;
+.comment{
+    text-align: left;
+    margin: 0;
+    p{
+        margin: 0;
+    }
+    a{
+        font-size: 1.2rem;
+    }
 }
 
 @media screen and (max-width: 600px) {
