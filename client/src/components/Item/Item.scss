@@ -1,0 +1,71 @@
+.flexcontainer {
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+.flexcontainer .image {
+  margin: auto;
+}
+.flexcontainer img {
+  border-radius: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.flexcontainer .btn-like {
+  width: 150px;
+  background-color: rgb(229, 229, 229);
+  margin-right: 10px;
+}
+.flexcontainer .btn-like:hover {
+  background-color: red;
+  color: rgb(255, 255, 255);
+}
+.flexcontainer .username {
+  text-decoration: none;
+  color: rgb(0, 72, 226);
+}
+
+.likes {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.likes .liked-by {
+  margin-left: 10px;
+}
+.likes .underline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .flexcontainer {
+    flex-direction: column;
+  }
+  img {
+    height: 200px;
+    max-width: 200px;
+  }
+}
+@media (min-width: 601px) and (max-width: 1000px) {
+  .flexcontainer {
+    flex-direction: column;
+  }
+  img {
+    height: 230px;
+    max-width: 230px;
+  }
+}
+@media (min-width: 1001px) {
+  .flexcontainer {
+    flex-direction: row;
+  }
+  img {
+    height: 250px;
+    max-width: 250px;
+    margin-right: 20px;
+  }
+  .image {
+    margin: 0 !important;
+  }
+}

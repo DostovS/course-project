@@ -25,8 +25,11 @@ export default function Collection(props) {
         {/* <p>Number of Items: {props.collection.items.length} items</p> */}
         <p>Number of Items: 15 items</p>
         <div className="action">
-          <Link to="/" className="btn btn-secondary">
-            Open Items List
+        <Link
+            to={`/collection/${props.collection._id}`}
+            className="btn btn-secondary"
+          >
+            Items List
           </Link> 
           <button className="btn btn-danger">Delete</button>
         </div>
