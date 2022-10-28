@@ -18,7 +18,7 @@ export default function Collection(props) {
       <BaseCard>
         <h3>{props.collection.title}</h3>
         <Link to="/">
-          <strong>@{props.collection.username}</strong>
+          @{props.collection.username}
         </Link>
         <br />
         <p>Description: {props.collection.description}</p>

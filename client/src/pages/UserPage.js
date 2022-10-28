@@ -19,15 +19,22 @@ export default function UserPage() {
   }, 5000);
 
   useEffect(() => {
-    async function fetchCollections() {
-      const res = await axios.get(`collection/?username=${username}`);
-      console.log(res.data);
-      setCollections(res.data);
-    }
     async function getUser() {
       const res = await axios.get(`user/?username=${username}`);
       console.log(res.data);
       setUser(res.data[0]);
+    }
+    async function fetchCollections() {
+      const res = await axios.get(`collection/?username=${username}`);
+      const tempArr = [];
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i].username === username) {
+          tempArr.unshift(res.data[i]);
+        } else {
+          continue;
+        }
+      }
+      setCollections(tempArr);
     }
     getUser();
     fetchCollections();
@@ -46,7 +53,11 @@ export default function UserPage() {
       <h2 className="page-title">Collections</h2>
       {collections.length === 0 ? <Loader /> : null}
       {collections.map((col) => (
-        <Collection collection={col} key={col._id} />
+        <Collection
+        collection={col}
+        key={col._id}
+        numOfItems={collections.length - 1}
+      />
       ))}
     </>
   );
