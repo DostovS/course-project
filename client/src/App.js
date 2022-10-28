@@ -16,8 +16,8 @@ import './App.scss';
 import CreateItemPage from './pages/CreateItem';
 import Item from './components/Item/Item';
 import UserPage from './pages/UserPage';
-import CollectionItems from "./pages/CollectionItems";
-
+import CollectionItems from './pages/CollectionItem';
+import CreateCollection from './pages/CreateCollection'
 function App() {
   const[loading, setLoading] = useState(false);
   useEffect(()=>{
@@ -51,6 +51,10 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/collection">
             <Route
+              path="/collection/create/:username"
+              element={<CreateCollection /> }
+            />
+            <Route
               path="/collection/:collectionID"
               element={<CollectionItems />}
             />
@@ -58,7 +62,6 @@ function App() {
           <Route path="/item">
             <Route path="/item" element={<Item />} />
           </Route>
-          <Route path="/user/:username" element={<UserPage />}/>
           <Route path="/user/:username" element={<UserPage />} />
           <Route path="/user/:username">
             <Route

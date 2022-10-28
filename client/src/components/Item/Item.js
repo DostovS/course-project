@@ -2,34 +2,40 @@ import BaseCard from "../UI/BaseCard/BaseCard";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../plugins/axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { v4 } from "uuid";
+import Modal from "./UI/Modal";
 import './Item.scss';
 
 export default function Item(props) {
   const [liked, setLiked] = useState(false);
   const currentUsername = localStorage.getItem("currentUser");
+  const currentUser = JSON.parse(currentUsername);
   const noImage =
     "https://media.istockphoto.com/vectors/no-image-available-picture-coming-soon-missing-photo-image-vector-id1379257950?b=1&k=20&m=1379257950&s=170667a&w=0&h=RyBlzT5Jt2U87CNkopCku3Use3c_3bsKS3yj6InGx1I=";
-    const like = async (username, itemID) => {
-      await axios.put(`item/like`, { username, itemID }).then(() => {
-        setLiked(true);
-      });
-    };
-    const unlike = async (username, itemID) => {
-      await axios.put(`item/unlike`, { username, itemID }).then(() => {
-        setLiked(false);
-      });
-    };
+  const like = async (username, itemID) => {
+    await axios.put(`item/like`, { username, itemID }).then(() => {
+      setLiked(true);
+    });
+  };
+  const unlike = async (username, itemID) => {
+    await axios.put(`item/unlike`, { username, itemID }).then(() => {
+      setLiked(false);
+    });
+  };
   
     return (
       <>
         <BaseCard>
+        <div className="item">
           <div className="flexcontainer">
             <div className="image">
               {props.item.image === "" ? (
                 <img src={noImage} alt="" />
               ) : (
                 <img
-                  src={`https://console.firebase.google.com/project/announce-ef079/storage/announce-ef079.appspot.com/o/images%2F${props.item.image}?alt=media`}
+                  src={`https://firebasestorage.googleapis.com/v0/b/itransition-a1be2.appspot.com/o/images%2F${props.item.image}?alt=media`}
                   alt={props.item.image}
                 />
               )}
@@ -42,7 +48,7 @@ export default function Item(props) {
               >
                 @{props.item.username}
               </Link>
-              <p>Description: {props.item.description}</p>
+              <p>Description: {props.item.description.trim() === "" ? 'No description...' : props.item.description}</p>
               {props.item.price && <p>Price: ${props.item.price}</p>}
               {props.item.year && <p>Year: {props.item.year}</p>}
               {props.item.from && <p>From: {props.item.from}</p>}
@@ -51,7 +57,6 @@ export default function Item(props) {
                   Link: <a href={props.item.link}>{props.item.link}</a>
                 </p>
               )}
-  
               <div className="tags">
                 {props.item.tags.map((tag) => {
                   return (
@@ -69,38 +74,69 @@ export default function Item(props) {
                 <button
                   className="btn btn-light btn-like"
                   onClick={() => {
-                    like(currentUsername.username, props.item._id);
+                    like(currentUser.username, props.item._id);
                   }}
                 >
-                  Like
+                  <FontAwesomeIcon
+                    icon={faHeart}
+                    className="heart-icon-crack"
+                  />
                 </button>
               ) : null}
               {liked ? (
                 <button
                   className="btn btn-light btn-like"
                   onClick={() => {
-                    unlike(currentUsername.username, props.item._id);
+                    unlike(currentUser.username, props.item._id);
                   }}
                 >
-                  Unlike
+                  <FontAwesomeIcon icon={faHeart} className="heart-icon" />
                 </button>
-              ) : null} 
+              ) : null}
             </div>
             <div className="liked-by">
-              <span>
-                Liked by{" "}
-                <strong>
-                  <Link to="/">cockboner</Link>
-                </strong>{" "}
-                and{" "}
-              </span>
               {props.item.likes.length !== 0 ? (
-                <span className="underline">other 54 people</span>
-              ) : null}{" "}
-              others
+                <div>
+                  <span>
+                    Liked by{" "}
+                    <strong>
+                      <Link to="/">{props.item.likes[0]}</Link>
+                    </strong>
+                  </span>
+                </div>
+              ) : null}
             </div>
+            <span
+              className="btn-liked-usernames"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              {props.item.likes.length > 1 ? (
+                <span className="underline">
+                  {" "}
+                  and other {props.item.likes.length - 1} users
+                </span>
+              ) : null}
+            </span>
+            <Modal title="Likes">
+              <ul className="list-group">
+                {props.item.likes.map((username) => {
+                  return (
+                    <li
+                      className="list-group-item"
+                      key={v4()}
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      <Link to={`/user/${username}`}>{username}</Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </Modal>
           </div>
-        </BaseCard>
+        </div>
+      </BaseCard>
       </>
     );
   }

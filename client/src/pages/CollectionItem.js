@@ -21,7 +21,8 @@ export default function CollectionItems() {
     }
     async function getItems() {
       const res = await axios.get(`items/${collectionID}`);
-      setItems(res.data);
+      const reversedItems = res.data.reverse();
+      setItems(reversedItems);
     }
     getCollection();
     getItems();
