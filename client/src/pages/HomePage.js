@@ -6,13 +6,12 @@ import axios from '../plugins/axios';
 
 export default function HomePage() {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  //eslint-disable-next-line
   const [items, setItems] = useState([]);
   const [collections, setCollections] = useState([]);
   const [isSelected, setIsSelected] = useState("items");
   const [itemPage, setItemPage] = useState(0);
   const [itemsLeft, setItemsLeft] = useState(true);
-  console.log(setItems);
-
   const getItems = async () => {
     const res = await axios.get(`recent/${itemPage}`);
     if (res.data.length < 5) setItemsLeft(false);
@@ -23,19 +22,13 @@ export default function HomePage() {
     const res = await axios.get("feed/collection");
     setCollections(res.data);
   };
-
   useEffect(() => {
     getCollections();
     getItems();
     // eslint-disable-next-line
   }, []);
+  console.log(collections);
 
-  const getCollectionsLength = async (id) => {
-    const res = await axios.get(`/collection/length/${id}`);
-    console.log(res.data.length);
-
-    return res.data;
-  };
   return (
     <section className='container'>
       <h1 className="text-center">
@@ -67,25 +60,23 @@ export default function HomePage() {
         </button>
       </div>
       <div>
+      <ul>
+          {isSelected === "collections"
+            ? () => {
+                collections.map((col) => {
+                  console.log(col);
 
+                  return (
+                    <li key={col._id}>
+                      <Collection collection={col} />
+                    </li>
+                  );
+                });
+              }
+            : null}
+        </ul>
         {/* Show Collections */}
-        {isSelected === "collections" ? (
-          <div>
-            {collections.map((collection) => {
-              return (
-                <div key={collection._id}>
-                  <Collection
-                    collection={collection}
-                    numOfItems={() => {
-                      getCollectionsLength(collection._id);
-                    }}
-                  />
-                </div>
-              );
-            })}
-            {collections.length === 0 && <Loader/>}
-          </div>
-        ) : null}
+
         {/* Show Items  */}
         {isSelected === "items" ? (
           <div>
@@ -96,7 +87,7 @@ export default function HomePage() {
                 </div>
               );
             })}
-            {collections.length === 0 && <Loader/>}
+            {collections.length === 0 && <Loader />}
             {itemsLeft ? (
               <button className="btn btn-secondary" onClick={getItems}>
                 Load More

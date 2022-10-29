@@ -31,7 +31,7 @@ export default function CollectionItems() {
 
   return (
     <>
-      <Collection collection={collection} numOfItems={items.length}/>
+            <Collection collection={collection}/>
       {items.map((item) => {
         return <Item item={item} key={item._id} />;
       })}
