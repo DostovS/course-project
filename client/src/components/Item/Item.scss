@@ -1,7 +1,14 @@
+.control {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+}
 .flexcontainer {
   display: flex;
   width: 100%;
   margin: auto;
+  justify-content: space-between;
+
   .image {
     margin: auto;
   }
@@ -23,63 +30,90 @@
     color: rgb(0, 72, 226);
   }
 }
+
 .likes {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  .liked-by{
+
+  .liked-by {
     margin-left: 10px;
   }
-  .underline{
+  .underline {
     text-decoration: underline;
     cursor: pointer;
   }
-  .heart-icon{
+
+  .heart-icon {
     color: red;
   }
-  .heart-icon-crack{
+  .heart-icon-crack {
     color: rgb(121, 121, 121);
   }
 }
-.comment{
-    text-align: left;
+.comment {
+  text-align: left;
+  margin: 0;
+  p {
     margin: 0;
-    p{
-        margin: 0;
-    }
-    a{
-        font-size: 1.2rem;
-    }
+
+  }
+  a {
+    font-size: 1.2rem;
+  }
 }
 
-@media screen and (max-width: 600px) {
+.dropdown__toggle {
+  margin: 0;
+}
+
+@media only screen and (min-width: 1001px) {
   .flexcontainer {
-    flex-direction: column;
-    img {
-      height: 200px;
-      max-width: 200px;
+    flex-direction: row;
+  }
+
+  img {
+    height: 200px;
+    max-width: 200px;
+    height: 250px;
+    max-width: 250px;
+    margin-right: 20px;
+  }
+  .image {
+    margin: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .flexcontainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    .image {
+      width: 100%;
+      img {
+        display: block;
+        margin: 0 auto;
+      }
     }
   }
 }
-@media (min-width: 601px) and (max-width: 1000px) {
+
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
   .flexcontainer {
-    flex-direction: column;
     img {
       height: 230px;
       max-width: 230px;
     }
   }
+
 }
-@media (min-width: 1001px) {
+
+@media only screen and (max-width: 600px) {
   .flexcontainer {
-    flex-direction: row;
     img {
-      height: 250px;
-      max-width: 250px;
-      margin-right: 20px;
-    }
-    .image {
-      margin: 0 !important;
-    }
+      height: 200px;
+      max-width: 200px;
+    } 
   }
+
 }
