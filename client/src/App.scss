@@ -130,6 +130,17 @@ td {
     opacity: 1;
   }
 }
+.btn-group{
+  width: 100%;
+
+}
+.btn-group span{
+  width: 100%;
+  font-size: 1.2rem;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
 .spinner {
   font-size: 3rem;
   animation: spin infinite 0.8s;

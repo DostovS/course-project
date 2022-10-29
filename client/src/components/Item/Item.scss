@@ -55,31 +55,31 @@
 @media screen and (max-width: 600px) {
   .flexcontainer {
     flex-direction: column;
-  }
-  img {
-    height: 200px;
-    max-width: 200px;
+    img {
+      height: 200px;
+      max-width: 200px;
+    }
   }
 }
 @media (min-width: 601px) and (max-width: 1000px) {
   .flexcontainer {
     flex-direction: column;
-  }
-  img {
-    height: 230px;
-    max-width: 230px;
+    img {
+      height: 230px;
+      max-width: 230px;
+    }
   }
 }
 @media (min-width: 1001px) {
   .flexcontainer {
     flex-direction: row;
-  }
-  img {
-    height: 250px;
-    max-width: 250px;
-    margin-right: 20px;
-  }
-  .image {
-    margin: 0 !important;
+    img {
+      height: 250px;
+      max-width: 250px;
+      margin-right: 20px;
+    }
+    .image {
+      margin: 0 !important;
+    }
   }
 }
