@@ -4,12 +4,14 @@ import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import axios from '../../plugins/axios';
 export default function CollectionControls(props) {
   async function deleteCollection() {
-    let confirmDelete = window.confirm(`Delete collection "${props.collection.title}"?`);
+    let confirmDelete = window.confirm(
+      `Delete collection "${props.collection.title}"?`
+    );
     if (confirmDelete) {
-        axios.delete(`delete/collection/${props.collection._id}`);
-        window.location.reload();
-    }else{
-        return false;
+      axios.delete(`delete/collection/${props.collection._id}`);
+      window.location.reload();
+    } else {
+      return false;
     }
   }
   return (
@@ -24,8 +26,8 @@ export default function CollectionControls(props) {
 
       <Dropdown.Menu>
         <Dropdown.Item
-          href={`/user/${props.collection.username}/${props.collection._id}/create`}
-        >
+          href={`/collection/create-item/${props.collection.username}/${props.collection._id}`}
+          >
           Add Item
         </Dropdown.Item>
         <Dropdown.Item
@@ -33,11 +35,8 @@ export default function CollectionControls(props) {
         >
           Edit Item
         </Dropdown.Item>
-        <Dropdown.Item
-          className="delete-control"
-          onClick={deleteCollection}
-        >
-          Delete Item
+        <Dropdown.Item className="delete-control" onClick={deleteCollection}>
+          Delete
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

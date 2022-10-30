@@ -24,12 +24,12 @@ export default function Collection(props) {
         <p>
           Description:{" "}
           {props.collection.description === ""
-            ? props.collection.description
-            : "No description."}
+            ? "No description."
+            : props.collection.description}
         </p>
         <p>Number of Items: {length} items</p>
         <Link
-          to={`/collection/${props.collection._id}`}
+          to={`/collection/items/${props.collection._id}`}
           className="btn btn-secondary mt-3"
         >
           Items List

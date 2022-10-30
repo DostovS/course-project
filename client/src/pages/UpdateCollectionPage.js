@@ -47,7 +47,7 @@ export default function UpdateCollectionPage() {
         <BaseCard>
           <form>
             <h2>
-              Create Collection for{" "}
+              Update Collection for{" "}
               <Link to={`/user/${username}`}>@{username}</Link>
             </h2>
             <div className="form-item">

@@ -130,7 +130,7 @@ export default function Item(props) {
                 })}
               </div>
             </div>
-            <ItemControls className="control" />
+            <ItemControls className="control" item={props.item} />
           </div>
           <div className="likes">
             <div className="like">

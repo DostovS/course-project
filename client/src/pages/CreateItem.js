@@ -122,6 +122,8 @@ export default function CreateItemPage() {
           };
           uploadImage();
         });
+        window.location.href = `/collection/items/${collectionID}`;
+
     } catch (err) {
       alert("Something went wrong");
       console.error(err);

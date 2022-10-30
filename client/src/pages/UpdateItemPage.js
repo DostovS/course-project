@@ -2,115 +2,127 @@ import BaseCard from "../components/UI/BaseCard/BaseCard";
 import { Link, useParams } from "react-router-dom";
 import { storage } from "../firebase";
 import { ref, uploadBytes } from "firebase/storage";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-
 import axios from "../plugins/axios";
 import Loader from "../components/UI/Loader";
 import { useEffect } from "react";
 
 export default function UpdateItemPage(props) {
   const navigate = useNavigate();
+  let { id } = useParams();
 
   const [dataUploading, setDataUploading] = useState(false);
-
-  //Inputs
   const [imageUpload, setImageUpload] = useState(null);
-  const [uploadStatus, setUploadStatus] = useState(false);
-  const [price, setPrice] = useState(false);
-  const [year, setYear] = useState(false);
-  const [from, setFrom] = useState(false);
-  const [link, setLink] = useState(false);
-
-  const [tag, setTag] = useState("");
   const [tags, setTags] = useState([]);
 
-  const nameRef = useRef("");
-  const descriptionRef = useRef(null);
-  const [priceRef, setPriceRef] = useState("");
-  const [yearRef, setYearRef] = useState("");
-  const [fromRef, setFromRef] = useState("");
-  const [linkRef, setLinkRef] = useState("");
+  //Input states
+  const [uploadStatus, setUploadStatus] = useState(false);
+  const [priceState, setPriceState] = useState(false);
+  const [yearState, setYearState] = useState(false);
+  const [fromState, setFromState] = useState(false);
+  const [linkState, setLinkState] = useState(false);
+
+  //Inputs
+  const [username, setUsername] = useState("");
+  const [collectionID, setCollectionID] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [year, setYear] = useState("");
+  const [from, setFrom] = useState("");
+  const [link, setLink] = useState("");
+  const [tag, setTag] = useState("");
+
+  //   const [tag, setTag] = useState("");
+
+  //   const nameRef = useRef("");
+  //   const descriptionRef = useRef(null);
+  //   const [priceRef, setPriceRef] = useState("");
+  //   const [yearRef, setYearRef] = useState("");
+  //   const [fromRef, setFromRef] = useState("");
+  //   const [linkRef, setLinkRef] = useState("");
+  //   const tagInput = useRef("");
 
   const [retrievedImageLink, setRetrievedImageLink] = useState("");
   const imageTitle = v4();
 
-  const tagInput = useRef("");
-
-  let { username, collectionID, id } = useParams();
-
   useEffect(() => {
     const getItem = async () => {
-      const res = await axios.get(`item/update/${id}`);
-      nameRef.current.value = res.data.name;
-      descriptionRef.current.value = res.data.description;
-      setPriceRef(res.data.price);
-      setYearRef(res.data.year);
-      setFromRef(res.data.from);
-      setLinkRef(res.data.link);
+      const res = await axios.get(`item/get/${id}`);
+      console.log(res.data);
+      setRetrievedImageLink(res.data.image);
+      setCollectionID(res.data.collectionID);
+      setUsername(res.data.username);
+      setName(res.data.name);
+      setDescription(res.data.description);
+      setPrice(res.data.price);
+      setYear(res.data.year);
+      setFrom(res.data.from);
+      setLink(res.data.link);
       setTags(res.data.tags);
       setRetrievedImageLink(res.data.image);
+
+      //Set states
+      if (res.data.price !== "") setPriceState(true);
+      if (res.data.year !== "") setYearState(true);
+      if (res.data.from !== "") setFromState(true);
+      if (res.data.link !== "") setLinkState(true);
     };
     getItem();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const handleUpdate = async (e) => {
     e.preventDefault();
     setDataUploading(true);
-    const nameInput = nameRef.current.value;
-    const descriptionInput = descriptionRef.current.value;
-    const priceInput = priceRef;
-    const yearInput = yearRef;
-    const fromInput = fromRef;
-    const linkInput = linkRef;
 
+    let image = "";
+    if (imageUpload) image = imageTitle;
+    if (!imageUpload) image = retrievedImageLink;
     try {
       const data = {
         username: username,
         collectionID: collectionID,
-        name: nameInput,
-        description: descriptionInput,
-        image: imageUpload ? imageTitle : retrievedImageLink,
+        name: name,
+        description: description,
+        image: image,
         tags: tags,
-        price: priceInput ? priceInput : "",
-        year: yearInput ? yearInput : "",
-        from: fromInput ? fromInput : "",
-        link: linkInput ? linkInput : "",
+        price: price ? price : "",
+        year: year ? year : "",
+        from: from ? from : "",
+        link: link ? link : "",
         customInputs: "",
       };
-      await axios
-        .post(`item/create/${username}/${collectionID}`, data)
-        .then(() => {
-          //Upload Image
-          const uploadImage = (e) => {
-            if (imageUpload == null) return;
-            setUploadStatus(false);
-            const imageRef = ref(storage, `images/${imageTitle}`);
-            uploadBytes(imageRef, imageUpload).then((url) => {
-              //   alert("Image Uploaded Successfuly");
-              setUploadStatus(true);
-              setImageUpload(null);
-            });
-          };
-          uploadImage();
-        });
-      window.location.href = `/collection/${collectionID}`;
+
+      await axios.put(`item/update/${id}`, data).then(() => {
+        //Upload Image
+        const uploadImage = (e) => {
+          if (imageUpload == null) return;
+          setUploadStatus(false);
+          const imageRef = ref(storage, `images/${imageTitle}`);
+          uploadBytes(imageRef, imageUpload).then((url) => {
+            //   alert("Image Uploaded Successfuly");
+            setUploadStatus(true);
+            setImageUpload(null);
+          });
+        };
+        uploadImage();
+      });
+      window.location.href = `/collection/items/${collectionID}`;
     } catch (err) {
       alert("Something went wrong");
       console.error(err);
-
       return false;
     }
   };
   function addTag(e) {
     e.preventDefault();
-    if (tagInput.current.value === "") {
+    if (tag === "") {
       alert("Tag Field cannot be empty! Please, check your input");
       return false;
     }
@@ -119,54 +131,53 @@ export default function UpdateItemPage(props) {
       id: v4(),
       tag: tag,
     });
-    tagInput.current.value = "";
+    tag.current.value = "";
     console.log(tags);
   }
 
   function removeTag(id) {
     setTags(tags.filter((tag) => tag.id !== id));
   }
-
   const additionalFields = (
     <div>
       <br />
       <br />
       <h3>Add more inputs</h3>
-      {!price ? (
+      {!priceState ? (
         <span
           className="btn-secondary btn btn-sm btn-additional-fields"
           onClick={() => {
-            setPrice(true);
+            setPriceState(true);
           }}
         >
           Price
         </span>
       ) : null}
-      {!year ? (
+      {!yearState ? (
         <span
           className="btn-secondary btn btn-sm btn-additional-fields"
           onClick={() => {
-            setYear(true);
+            setYearState(true);
           }}
         >
           Year
         </span>
-      ) : null}
-      {!from ? (
+      ) : null}(
+      {!fromState ? (
         <span
           className="btn-secondary btn btn-sm btn-additional-fields"
           onClick={() => {
-            setFrom(true);
+            setFromState(true);
           }}
         >
           From
         </span>
       ) : null}
-      {!link ? (
+      {!linkState ? (
         <span
           className="btn-secondary btn btn-sm btn-additional-fields"
           onClick={() => {
-            setLink(true);
+            setLinkState(true);
           }}
         >
           Link
@@ -176,7 +187,6 @@ export default function UpdateItemPage(props) {
       <br />
     </div>
   );
-
   return (
     <>
       {dataUploading ? (
@@ -192,13 +202,20 @@ export default function UpdateItemPage(props) {
                 handleUpdate(e);
               }}
             >
-              <h2>Create Item</h2>
+              <h2>Edit Item</h2>
               <div className="form-item">
                 <br />
                 <label className="form-label" htmlFor="name" required>
                   Name
                 </label>
-                <input className="form-control" type="text" ref={nameRef} value={nameRef}/>
+                <input
+                  className="form-control"
+                  type="text"
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                  value={name}
+                />
               </div>
               <div className="form-item">
                 <br />
@@ -209,8 +226,10 @@ export default function UpdateItemPage(props) {
                   name="description"
                   rows="3"
                   className="form-control"
-                  ref={descriptionRef}
-                  value={descriptionRef}
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                  }}
+                  value={description}
                 ></textarea>
               </div>
               <div className="form-item">
@@ -237,7 +256,6 @@ export default function UpdateItemPage(props) {
                     <input
                       className="form-control input-inline"
                       type="text"
-                      ref={tagInput}
                       value={tag}
                       onChange={(e) => setTag(e.target.value)}
                     />
@@ -267,8 +285,10 @@ export default function UpdateItemPage(props) {
                     );
                   })}
                 </div>
-                {!price || !year || !from || !link ? additionalFields : null}
-                {price ? (
+                {!priceState || !yearState || !fromState || !linkState
+                  ? additionalFields
+                  : null}
+                {priceState ? (
                   <div className="form-tem">
                     <br />
                     <label className="form-label" htmlFor="price">
@@ -278,12 +298,14 @@ export default function UpdateItemPage(props) {
                       <input
                         className="form-control input-inline"
                         type="text"
-                        onChange={(e) => setPriceRef(e.target.value)}
-                        value={priceRef}
+                        onChange={(e) => {
+                          setPrice(e.target.value);
+                        }}
+                        value={price}
                       />
                       <button
                         onClick={() => {
-                          setPrice(false);
+                          setPriceState(false);
                         }}
                         className="btn btn-danger btn-inline"
                       >
@@ -292,7 +314,7 @@ export default function UpdateItemPage(props) {
                     </div>
                   </div>
                 ) : null}
-                {year ? (
+                {yearState ? (
                   <div className="form-tem">
                     <br />
                     <label className="form-label" htmlFor="year">
@@ -302,12 +324,14 @@ export default function UpdateItemPage(props) {
                       <input
                         className="form-control input-inline"
                         type="text"
-                        onChange={(e) => setYearRef(e.target.value)}
-                        value={yearRef}
+                        onChange={(e) => {
+                          setYear(e.target.value);
+                        }}
+                        value={year}
                       />
                       <button
                         onClick={() => {
-                          setYear(false);
+                          setYearState(false);
                         }}
                         className="btn btn-danger btn-inline"
                       >
@@ -316,7 +340,7 @@ export default function UpdateItemPage(props) {
                     </div>
                   </div>
                 ) : null}
-                {from ? (
+                {fromState ? (
                   <div className="form-tem">
                     <br />
                     <label className="form-label" htmlFor="from">
@@ -326,12 +350,14 @@ export default function UpdateItemPage(props) {
                       <input
                         className="form-control input-inline"
                         type="text"
-                        onChange={(e) => setFromRef(e.target.value)}
-                        value={fromRef}
+                        onChange={(e) => {
+                          setFrom(e.target.value);
+                        }}
+                        value={from}
                       />
                       <button
                         onClick={() => {
-                          setFrom(false);
+                          setFromState(false);
                         }}
                         className="btn btn-danger btn-inline"
                       >
@@ -340,7 +366,7 @@ export default function UpdateItemPage(props) {
                     </div>
                   </div>
                 ) : null}
-                {link ? (
+                {linkState ? (
                   <div className="form-tem">
                     <br />
                     <label className="form-label" htmlFor="link">
@@ -350,12 +376,14 @@ export default function UpdateItemPage(props) {
                       <input
                         className="form-control input-inline"
                         type="text"
-                        onChange={(e) => setLinkRef(e.target.value)}
-                        value={linkRef}
+                        onChange={(e) => {
+                          setLink(e.target.value);
+                        }}
+                        value={link}
                       />
                       <button
                         onClick={() => {
-                          setLink(false);
+                          setLinkState(false);
                         }}
                         className="btn btn-danger btn-inline"
                       >

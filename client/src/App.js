@@ -57,7 +57,11 @@ function App() {
               element={<CreateCollection />}
             />
             <Route
-              path="/collection/:collectionID"
+              path="/collection/create-item/:username/:collectionID"
+              element={<CreateItemPage />}
+            />
+            <Route
+              path="/collection/items/:collectionID"
               element={<CollectionItems />}
             />
             <Route
@@ -67,24 +71,16 @@ function App() {
           </Route>
           <Route path="/item">
             <Route path="/item" element={<Item />} />
-            <Route
-              path="/item/:username/:collectionID/:id/update"
-              element={<UpdateItemPage />}
-            />
+            <Route path="/item/edit/:id" element={<UpdateItemPage />} />
           </Route>
           <Route path="/user/:username" element={<UserPage />} />
           <Route path="/user/:username">
             <Route
               path="/user/:username/:collectionID"
               element={<CollectionItems />}
-            >
-              <Route
-                path="/user/:username/:collectionID/create"
-                element={<CreateItemPage />}
-              />
-            </Route>
+            ></Route>
           </Route>
-          </Routes>
+        </Routes>
         </ThemeProvider>
       }
     </>
