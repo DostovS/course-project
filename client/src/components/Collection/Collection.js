@@ -15,19 +15,25 @@ export default function Collection(props) {
   return (
     <>
       <BaseCard>
-      <div className="d-flex justify-content-between">
-      <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between">
           <h3>{props.collection.title}</h3>
           <CollectionControls collection={props.collection} />
         </div>
+        <Link to="/">@{props.collection.username}</Link>
+        <br />
+        <p>
+          Description:{" "}
+          {props.collection.description.trim === ""
+            ? props.collection.description
+            : "No description."}
+        </p>
         <p>Number of Items: {length} items</p>
-          <Link
+        <Link
           to={`/collection/${props.collection._id}`}
           className="btn btn-secondary mt-3"
-          >
-            Items List
-          </Link>
-      </div>
+        >
+          Items List
+        </Link>
       </BaseCard>
     </>
   );

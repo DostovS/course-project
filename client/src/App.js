@@ -18,6 +18,7 @@ import Item from './components/Item/Item';
 import UserPage from './pages/UserPage';
 import CollectionItems from './pages/CollectionItem';
 import CreateCollection from './pages/CreateCollection'
+import UpdateItemPage from './pages/UpdateItemPage';
 function App() {
   const[loading, setLoading] = useState(false);
   useEffect(()=>{
@@ -52,11 +53,15 @@ function App() {
             <Route path="/collection">
             <Route
               path="/collection/create/:username"
-              element={<CreateCollection /> }
+              element={<CreateCollection />}
             />
             <Route
               path="/collection/:collectionID"
               element={<CollectionItems />}
+            />
+            <Route
+              path="/collection/:username/:collectionID/update"
+              element={<UpdateItemPage />}
             />
           </Route>
           <Route path="/item">
