@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 import UserControls from "./UserControl";
-
-
+import {Link} from 'react-router-dom'
 export default function User(props) {
   const { t } = useTranslation();
   const [user, setUser] = useState({});
@@ -98,6 +97,12 @@ export default function User(props) {
             </tr>
           </tbody>
         </table>
+        <Link
+          to={`/collection/create/${user.username}`}
+          className="btn btn-success"
+        >
+          Create Collection
+        </Link>
       </BaseCard>
   );
 }

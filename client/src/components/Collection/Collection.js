@@ -19,9 +19,8 @@ export default function Collection(props) {
           <h3>{props.collection.title}</h3>
           <CollectionControls collection={props.collection} />
         </div>
-        <Link to={`/user/${props.collection.username}`}>
-          @{props.collection.username}
-        </Link>        <br />
+        <Link to="/">@{props.collection.username}</Link>
+        <br />
         <p>
           Description:{" "}
           {props.collection.description === ""
