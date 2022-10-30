@@ -23,7 +23,7 @@ export default function Collection(props) {
         <br />
         <p>
           Description:{" "}
-          {props.collection.description.trim === ""
+          {props.collection.description === ""
             ? props.collection.description
             : "No description."}
         </p>
