@@ -97,14 +97,17 @@ tr {
 td {
   padding: 0.4rem 0;
 }
-.user-controls {
+.user-controls{
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+
 }
-.user-controls h2 {
+.user-controls h2{
   margin: 0;
+}
+.span-margin{
+  margin-left: 0.5rem;
 }
 .loading {
   margin: auto;

@@ -6,58 +6,52 @@ import axios from "../plugins/axios";
 import User from "../components/user/User";
 import Collection from "../components/Collection/Collection";
 import Loader from "../components/UI/Loader";
+import { useTranslation } from "react-i18next";
 
 export default function UserPage() {
+  const { t } = useTranslation();
   const [collections, setCollections] = useState([]);
   const [user, setUser] = useState({});
-  let refreshRate = 0;
-  const navigate = useNavigate();
-  let { username } = useParams();
 
-  setInterval(function () {
-    refreshRate++;
-  }, 5000);
+  let { username } = useParams();
+  const navigate = useNavigate();
+
+  async function getUser() {
+    const res = await axios.get(`users`);
+    const user = res.data.find((user) => {
+      return user.username === username;
+    });
+    setUser(user);
+  }
 
   useEffect(() => {
-    async function getUser() {
-      const res = await axios.get(`user/?username=${username}`);
-      console.log(res.data);
-      setUser(res.data[0]);
-    }
     async function fetchCollections() {
-      const res = await axios.get(`collection/?username=${username}`);
-      const tempArr = [];
-      for (let i = 0; i < res.data.length; i++) {
-        if (res.data[i].username === username) {
-          tempArr.unshift(res.data[i]);
-        } else {
-          continue;
-        }
-      }
-      setCollections(tempArr);
+      const res = await axios.get(`collection/user/${user._id}`);
+      setCollections(res.data);
     }
     getUser();
     fetchCollections();
+
     // eslint-disable-next-line
-  }, [refreshRate]);
+  }, [user]);
 
   return (
     <>
       <div>
         <Link to="" className="link-back" onClick={() => navigate(-1)}>
-          <FontAwesomeIcon icon={faLeftLong} /> Go Back
+          <FontAwesomeIcon icon={faLeftLong} /> {t("goback")}{" "}
         </Link>
-        <h2 className="page-title">User Profile</h2>
-        <User user={user} />
+        <h2 className="page-title">{t("userpage-title")}</h2>
+        <User username={username} />
       </div>
-      <h2 className="page-title">Collections</h2>
+      <h2 className="page-title">{t("collections")}</h2>
       {collections.length === 0 ? <Loader /> : null}
       {collections.map((col) => (
         <Collection
-        collection={col}
-        key={col._id}
-        numOfItems={collections.length - 1}
-      />
+          collection={col}
+          key={col._id}
+          numOfItems={collections.length - 1}
+        />
       ))}
     </>
   );

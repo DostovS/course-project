@@ -32,7 +32,7 @@ export default function ItemControls(props) {
         <Dropdown.Item href={`/item/edit/${props.item._id}`}>
             Edit
           </Dropdown.Item>
-          <Dropdown.Item onClick={deleteItem}>Delete</Dropdown.Item>
+          <Dropdown.Item onClick={deleteItem} className="delete-control">Delete</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

@@ -100,10 +100,7 @@ export default function Item(props) {
             <div>
               <h3>{props.item.name}</h3>
 
-              <Link
-                className="italic username"
-                to={`/user/${props.item.username}`}
-              >
+              <Link className="fst-italic" to={`/user/${props.item.username}`}>
                 @{props.item.username}
               </Link>
               <p>

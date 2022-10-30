@@ -52,33 +52,33 @@ function App() {
             <Route path='/signup' element={ <SignUp /> } />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/collection">
-            <Route
+              <Route
               path="/collection/create/:username"
               element={<CreateCollection />}
-            />
-            <Route
+              />
+              <Route
               path="/collection/create-item/:username/:collectionID"
               element={<CreateItemPage />}
-            />
-            <Route
+              />
+              <Route
               path="/collection/items/:collectionID"
               element={<CollectionItems />}
-            />
-            <Route
+              />
+              <Route
               path="/collection/:username/:collectionID/update"
               element={<UpdateCollectionPage />}
-            />
-          </Route>
-          <Route path="/item">
-            <Route path="/item" element={<Item />} />
-            <Route path="/item/edit/:id" element={<UpdateItemPage />} />
-          </Route>
-          <Route path="/user/:username" element={<UserPage />} />
-          <Route path="/user/:username">
-            <Route
+              />
+            </Route>
+            <Route path="/item">
+              <Route path="/item" element={<Item />} />
+              <Route path="/item/edit/:id" element={<UpdateItemPage />} />
+            </Route>
+            <Route path="/user/:username">
+            <Route path="/user/:username" element={<UserPage />} />
+              <Route
               path="/user/:username/:collectionID"
               element={<CollectionItems />}
-            ></Route>
+              ></Route>
           </Route>
         </Routes>
         </ThemeProvider>
