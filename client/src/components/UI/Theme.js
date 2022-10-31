@@ -5,9 +5,10 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.text};
     transition: all 0.50s linear;
   }
-  .card {
+  #card {
     background: ${({ theme }) => theme.cardColor};
     color: ${({ theme }) => theme.cardText};
+    border-color: ${({ theme }) => theme.cardBorder};
     transition: all 0.50s linear;
   }
   `
@@ -16,7 +17,7 @@ export const lightTheme = {
   text: '#363537',
   cardColor: '#fff',
   cardText: '#000',
-  toggleBorder: '#FFF',
+  cardBorder: '#DFDFDF',
   background: '#363537',
 }
 export const darkTheme = {
@@ -24,6 +25,6 @@ export const darkTheme = {
   text: '#FAFAFA',
   cardColor: '#181818',
   cardText: '#fff',
-  toggleBorder: '#6B8096',
+  cardBorder: '#9B9D9E',
   background: '#999',
 }

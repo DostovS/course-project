@@ -18,13 +18,20 @@
   padding: .5rem 0;
 }
 .theme {
+  padding: .5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border: 1px solid grey;
+  border-radius: 5px;
+    &:hover {
+      transition: .3s ease;
+      border-color: rgb(209, 213, 209);
+    }
   svg {
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.5rem;
     animation: theme 3s linear infinite;
   }
 }

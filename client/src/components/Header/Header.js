@@ -43,23 +43,23 @@ function Header({themeToggler,theme}) {
           <Nav
             className="me-auto my-2 my-lg-0 center">
             <Nav.Link href="/">
-              {t("home")}
+              {t("nav-home")} 
             </Nav.Link>
             <Nav.Link href="/profile">
-              {t("profile")}
+              {t("nav-profile")}
             </Nav.Link>
-            <NavDropdown title={t("account")}
+            <NavDropdown title={t("nav-account")}
               id="navbarScrollingDropdown">
               <NavDropdown.Item href="/login">
-              {t("login")}
+                {t("nav-login")}
               </NavDropdown.Item>
               <NavDropdown.Item href="/signup">
-                {t('sign')} 
+                {t("nav-signup")} 
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item style={{"color": 'red'}}
                 onClick={logOut}>          
-                {t("logout")}
+                {t("nav-logout")}
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown
@@ -88,13 +88,13 @@ function Header({themeToggler,theme}) {
           <Form className="d-flex">
           <Form.Control
               type="search"
-              placeholder={t("search")}
+              placeholder={t("nav-search")}
               className="me-2 search"
               aria-label="Search"
             />
             <Button 
               variant="outline-success">
-                {t("search")}
+                {t("nav-search")}
             </Button>
           </Form>
         </Navbar.Collapse>

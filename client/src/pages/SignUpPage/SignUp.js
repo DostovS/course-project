@@ -5,16 +5,17 @@ import { useTranslation } from 'react-i18next';
 import BaseCard from '../../components/UI/BaseCard/BaseCard';
 let userExists = false;
 
-export default function SignUp() {
-  const {t} = useTranslation();
+export default function SignupPage() {
   const inputUsername = useRef();
   const inputPassword = useRef();
   const inputName = useRef();
   const inputLastName = useRef();
   const inputEmail = useRef();
+  const { t } = useTranslation();
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     const enteredEmail = inputEmail.current.value.toLowerCase();
     const enteredUsername = inputUsername.current.value.toLowerCase();
     const enteredPassword = inputPassword.current.value;
@@ -22,11 +23,11 @@ export default function SignUp() {
     const enteredLastName = inputLastName.current.value;
 
     if (enteredUsername.trim().length === 0) {
-      alert(t("shortemail"));
+      alert(t("login-username-validation"));
       return false;
     }
     if (enteredPassword.trim().length === 0 || enteredPassword.length < 4) {
-      alert(t("shortpass"));
+      alert(t("login-password-validation"));
       return false;
     }
     console.log(enteredUsername, enteredPassword, enteredName, enteredLastName);
@@ -38,7 +39,7 @@ export default function SignUp() {
     );
     if (candidate) {
       userExists = true;
-      alert(t("oldaccount"));
+      alert(t("signup-user-exists"));
       window.location.href("/login");
     }
     const userData = {
@@ -48,10 +49,9 @@ export default function SignUp() {
       password: enteredPassword,
       email: enteredEmail,
     };
-
     try {
       await axios.post("user/registration", userData);
-      alert(t("created"));
+      alert(t("signup-created"));
       const loginData = {
         email: enteredEmail,
         password: enteredPassword,
@@ -62,92 +62,78 @@ export default function SignUp() {
       window.location.href = "/";
     } catch (err) {
       console.log(err);
-      alert(t("notcreated"));
+      alert(t("signup-failed"));
       return false;
     }
   }
 
   return (
-        <BaseCard>
-          <form onSubmit={handleSubmit}>
-            <h2>{t("signup")}</h2>
-            <p>
-              {t("have-account")} {" "}
-              <Link to='/login'>
-                {t("log-in")}
-              </Link>
-            </p>
-            <div className="formItem">
-              <label htmlFor="name">
-                {t("name")}
-              </label>
-              <input
-                type="test"
-                className="form-control input"
-                placeholder={t("your-name")}
-                ref={inputName}
-                required
-              />
-            </div>
-            <div className="formItem">
-              <label htmlFor="lastName">
-                {t("lastname")}
-              </label>
-              <input
-                type="test"
-                className="form-control input"
-                placeholder={t("your-email")}
-                ref={inputLastName}
-                required
-              />
-            </div>
-            <div className="formItem">
-              <label htmlFor="username">
-                {t("username")}
-              </label>
-              <input
-                type="text"
-                className="form-control input"
-                placeholder="@username"
-                ref={inputUsername}
-                required
-              />
-            </div>
-            <div className="formItem">
-              <label htmlFor="email">
-                {t("email")}
-              </label>
-              <input
-                type="email"
-                className="form-control input"
-                placeholder={t("your-email")}
-                ref={inputEmail}
-                required
-              />
-            </div>
-            <div className="formItem">
-              <label htmlFor="password">
-                {t("password")}
-              </label>
-              <input
-                className="form-control input"
-                type="password"
-                placeholder={t("your-password")}
-                ref={inputPassword}
-                required
-              />
-            </div>
-            <div>
-              <button className="btn btn-success">
-                {t("signup-submit")}
-              </button>
-            </div>
-          </form>
-          {userExists ? (
-            <div>
-              <p>{t("signup-redirect")}</p>
-            </div>
-          ) : null}
-        </BaseCard>
-  )
+    <BaseCard>
+      <form onSubmit={handleSubmit}>
+        <h2>{t("signup-title")}</h2>
+        <p>
+          {t("signup-have-account")}{" "}
+          <Link to="/login">{t("signup-login")}</Link>
+        </p>
+        <div className="formItem">
+          <label htmlFor="name">{t("signup-name")}</label>
+          <input
+            type="test"
+            className="form-control input"
+            placeholder="John"
+            ref={inputName}
+            required
+          />
+        </div>
+        <div className="formItem">
+          <label htmlFor="lastName">{t("signup-lastname")}</label>
+          <input
+            type="test"
+            className="form-control input"
+            placeholder="Jefferson"
+            ref={inputLastName}
+            required
+          />
+        </div>
+        <div className="formItem">
+          <label htmlFor="username">{t("signup-username")}</label>
+          <input
+            type="text"
+            className="form-control input"
+            placeholder="@username"
+            ref={inputUsername}
+            required
+          />
+        </div>
+        <div className="formItem">
+          <label htmlFor="email">{t("signup-email")}</label>
+          <input
+            type="email"
+            className="form-control input"
+            placeholder="your-email@gmail.com"
+            ref={inputEmail}
+            required
+          />
+        </div>
+        <div className="formItem">
+          <label htmlFor="password">{t("signup-password")}</label>
+          <input
+            className="form-control input"
+            type="password"
+            placeholder="password123"
+            ref={inputPassword}
+            required
+          />
+        </div>
+        <div>
+          <button className="btn btn-success">{t("signup-submit")}</button>
+        </div>
+      </form>
+      {userExists ? (
+        <div>
+          <p>{t("signup-redirect")}</p>
+        </div>
+      ) : null}
+    </BaseCard>
+  );
 }
