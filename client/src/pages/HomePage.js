@@ -30,7 +30,7 @@ export default function HomePage() {
   console.log(collections);
 
   return (
-    <section className='container'>
+    <div>
       <h1 className="text-center">
         Welcome, <span className="fw-bold">{currentUser.name}</span>
       </h1>
@@ -85,6 +85,6 @@ export default function HomePage() {
           </div>
         ) : null}
       </div>
-    </section>
+    </div>
   );
 }

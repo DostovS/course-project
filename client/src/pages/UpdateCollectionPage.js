@@ -33,7 +33,7 @@ export default function UpdateCollectionPage() {
       title: title,
       description: description,
     });
-    navigate(`/collection/${collectionID}`);
+    navigate(`/user/${username}/${collectionID}`);
   };
 
   return (

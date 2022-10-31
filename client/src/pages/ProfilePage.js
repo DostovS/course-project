@@ -38,13 +38,13 @@ export default function ProfilePage() {
   }, [refreshRate]);
 
   return (
-    <div className="container">
-      <Link to="" className="link-back" 
+    <>
+    <div>
+       <Link to="" className="link-back" 
         onClick={() => navigate(-1)}>
           <FontAwesomeIcon icon={faLeftLong} /> 
           Go back
       </Link>
-      <div className="form">
         <User username={currentUser.username} />
         <h2 className="page-title">
           Collections
@@ -52,8 +52,9 @@ export default function ProfilePage() {
         {collections.length === 0 ? <Loader /> : null}
         {collections.map((col) => (
           <Collection collection={col} key={col._id} />
-        ))}
-      </div> 
+        ))}     
     </div>
+
+    </>
   );
 }

@@ -1,9 +1,12 @@
+import React from 'react'
+import axios from "../../plugins/axios";
 import Dropdown from "react-bootstrap/Dropdown";
+import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
-import axios from "../../plugins/axios";
 
 export default function ItemControls(props) {
+  const { t } = useTranslation();
   async function deleteItem() {
     let confirmDelete = window.confirm(
       'Delete item "' + props.item.title + '"?'
@@ -16,7 +19,6 @@ export default function ItemControls(props) {
       return false;
     }
   }
-  console.log(props.item);
 
   return (
     <Dropdown>
@@ -27,12 +29,13 @@ export default function ItemControls(props) {
       >
         <FontAwesomeIcon icon={faEllipsisVertical} />
       </Dropdown.Toggle>
-
       <Dropdown.Menu>
         <Dropdown.Item href={`/item/edit/${props.item._id}`}>
-            Edit
-          </Dropdown.Item>
-          <Dropdown.Item onClick={deleteItem} className="delete-control">Delete</Dropdown.Item>
+          {t("edit-item")}
+        </Dropdown.Item>
+        <Dropdown.Item onClick={deleteItem} className="delete-control">
+          {t("delete-item")}
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

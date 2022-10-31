@@ -1,14 +1,15 @@
-.control {
+.item-control {
   position: absolute;
   top: 0;
   right: 1rem;
 }
-.flexcontainer {
+.control {
   display: flex;
+  justify-content: space-between;
+}
+.flexcontainer {
   width: 100%;
   margin: auto;
-  justify-content: space-between;
-
   .image {
     margin: auto;
   }
@@ -30,12 +31,10 @@
     color: rgb(0, 72, 226);
   }
 }
-
 .likes {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-
   .liked-by {
     margin-left: 10px;
   }
@@ -43,7 +42,6 @@
     text-decoration: underline;
     cursor: pointer;
   }
-
   .heart-icon {
     color: red;
   }
@@ -56,34 +54,32 @@
   margin: 0;
   p {
     margin: 0;
-
   }
   a {
     font-size: 1.2rem;
   }
 }
-
 .dropdown__toggle {
   margin: 0;
 }
-
+.cookie {
+  color: rgb(181, 90, 26);
+  font-size: 1.5rem;
+}
 @media only screen and (min-width: 1001px) {
   .flexcontainer {
-    flex-direction: row;
-  }
-
-  img {
-    height: 200px;
-    max-width: 200px;
-    height: 250px;
-    max-width: 250px;
-    margin-right: 20px;
-  }
-  .image {
-    margin: 0 !important;
+    display: flex;
+    flex-direction: flex-start;
+    img {
+      height: 250px;
+      max-width: 250px;
+      margin-right: 20px;
+    }
+    .image {
+      margin: 0 !important;
+    }
   }
 }
-
 @media only screen and (max-width: 1000px) {
   .flexcontainer {
     flex-direction: row;
@@ -97,23 +93,21 @@
     }
   }
 }
-
 @media only screen and (min-width: 601px) and (max-width: 1000px) {
   .flexcontainer {
     img {
       height: 230px;
       max-width: 230px;
-    }
+    }    
   }
 
 }
-
 @media only screen and (max-width: 600px) {
   .flexcontainer {
     img {
       height: 200px;
       max-width: 200px;
-    } 
+    }    
   }
 
 }

@@ -37,5 +37,23 @@
   "signup-redirect": "Зарегистрироваться перенаправление",
   "make-admin": "Make admin",
   "remove-admin": "Remove admin",
-  "delete-user": "Delete user"
+  "delete-user": "Delete user",
+
+  "comment-itemjs": "================Item.js translations================",
+  "i-description": "Описание",
+  "i-no-description": "Нет описания",
+  "i-price": "Цена",
+  "i-year": "Год",
+  "i-from": "Изготовлен в (страна)",
+  "i-link": "Ссылка",
+  "i-liked-by": "Нравится",
+  "i-and-others": "и другим",
+  "i-users": "пользователям",
+  "i-comments": "Комментарии",
+  "i-no-comments": "Нет комментариев",
+  "i-type-comment": "Напишите комментарий тут...",
+
+  "comment-itemcontrols": "================ItemControls.js translations============",
+  "edit-item": "Изменить предмет",
+  "delete-item": "Удалить предмет"
 } 

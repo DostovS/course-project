@@ -37,5 +37,23 @@
   "signup-redirect": "Sign up redirect",
   "make-admin": "Make admin",
   "remove-admin": "Remove admin",
-  "delete-user": "Delete user"
+  "delete-user": "Delete user",
+
+  "comment-itemjs": "================Item.js translations================",
+  "i-description": "Description",
+  "i-no-description": "No description",
+  "i-price": "Price",
+  "i-year": "Year",
+  "i-from": "From",
+  "i-link": "Link",
+  "i-liked-by": "Liked by",
+  "i-and-others": "and other",
+  "i-users": "users",
+  "i-comments": "Comments",
+  "i-no-comments": "No comments yet",
+  "i-type-comment": "Type your comment here...",
+
+  "comment-itemcontrols": "================ItemControls.js translations============",
+  "edit-item": "Edit item",
+  "delete-item": "Delete item"
 }

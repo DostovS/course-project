@@ -68,8 +68,6 @@ export default function SignUp() {
   }
 
   return (
-    <section className='form'>
-      <div className="container">
         <BaseCard>
           <form onSubmit={handleSubmit}>
             <h2>{t("signup")}</h2>
@@ -151,7 +149,5 @@ export default function SignUp() {
             </div>
           ) : null}
         </BaseCard>
-      </div>
-    </section>
   )
 }

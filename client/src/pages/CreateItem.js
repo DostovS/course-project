@@ -117,7 +117,7 @@ export default function CreateItemPage() {
             const imageRef = ref(storage, `images/${imageTitle}`);
             uploadBytes(imageRef, imageUpload).then((url) => {              setUploadStatus(true);
               setImageUpload(null);
-              window.location.href = `/collection/${collectionID}`;
+              window.location.href = `/user/${username}/${collectionID}`;
             });
           };
           uploadImage();
@@ -150,7 +150,7 @@ export default function CreateItemPage() {
   }
 
   return (
-    <div className='container'>
+    <>
       {dataUploading ? (
         <Loader />
       ) : (
@@ -339,6 +339,6 @@ export default function CreateItemPage() {
           </BaseCard>
         </div>
       )}
-    </div>
+    </>
   );                 
 }

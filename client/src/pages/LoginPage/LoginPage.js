@@ -39,7 +39,6 @@ export default function LoginPage() {
     }
   };
   return (
-    <section className="form">
           <BaseCard>
           <form onSubmit={handleSubmit}>
             <h2>Login</h2>
@@ -82,6 +81,5 @@ export default function LoginPage() {
             </div>
           </form>
         </BaseCard>
-    </section>
   )
 }

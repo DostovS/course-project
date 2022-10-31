@@ -113,8 +113,9 @@ export default function UpdateItemPage(props) {
         };
         uploadImage();
       });
-      window.location.href = `/collection/items/${collectionID}`;
-    } catch (err) {
+      if (imageUpload == null) {
+        window.location.href = `/user/${username}/${collectionID}`;
+      }    } catch (err) {
       alert("Something went wrong");
       console.error(err);
       return false;
