@@ -75,7 +75,7 @@ export default function SignupPage() {
           {t("signup-have-account")}{" "}
           <Link to="/login">{t("signup-login")}</Link>
         </p>
-        <div className="formItem">
+        <div className="formItem mb-1">
           <label htmlFor="name">{t("signup-name")}</label>
           <input
             type="test"
@@ -85,7 +85,7 @@ export default function SignupPage() {
             required
           />
         </div>
-        <div className="formItem">
+        <div className="formItem mb-1">
           <label htmlFor="lastName">{t("signup-lastname")}</label>
           <input
             type="test"
@@ -95,7 +95,7 @@ export default function SignupPage() {
             required
           />
         </div>
-        <div className="formItem">
+        <div className="formItem mb-1">
           <label htmlFor="username">{t("signup-username")}</label>
           <input
             type="text"
@@ -105,7 +105,7 @@ export default function SignupPage() {
             required
           />
         </div>
-        <div className="formItem">
+        <div className="formItem mb-1">
           <label htmlFor="email">{t("signup-email")}</label>
           <input
             type="email"
@@ -115,7 +115,7 @@ export default function SignupPage() {
             required
           />
         </div>
-        <div className="formItem">
+        <div className="formItem mb-2">
           <label htmlFor="password">{t("signup-password")}</label>
           <input
             className="form-control input"

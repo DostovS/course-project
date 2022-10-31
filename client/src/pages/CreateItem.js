@@ -229,7 +229,7 @@ export default function CreateItemPage() {
                       onChange={(e) => setTag(e.target.value)}
                     />
                     <button
-                      className="btn btn-secondary btn-inline"
+                      className="btn btn-secondary btn-inline ms-2"
                       onClick={(e) => {
                         addTag(e);
                       }}
@@ -256,7 +256,7 @@ export default function CreateItemPage() {
                 </div>
                 {!price || !year || !from || !link ? additionalFields : null}
                 {price ? (
-                  <div className="form-tem">
+                  <div className="form-item mb-1">
                     <br />
                     <label className="form-label" htmlFor="price">
                       {t("input-price")}
@@ -271,7 +271,7 @@ export default function CreateItemPage() {
                         onClick={() => {
                           setPrice(false);
                         }}
-                        className="btn btn-danger btn-inline"
+                        className="btn btn-danger btn-inline ms-2"
                       >
                         <FontAwesomeIcon icon={faTrashCan} />
                       </button>
@@ -279,7 +279,7 @@ export default function CreateItemPage() {
                   </div>
                 ) : null}
                 {year ? (
-                  <div className="form-tem">
+                  <div className="form-item mb-1">
                     <br />
                     <label className="form-label" htmlFor="year">
                       {t("input-year")}
@@ -294,7 +294,7 @@ export default function CreateItemPage() {
                         onClick={() => {
                           setYear(false);
                         }}
-                        className="btn btn-danger btn-inline"
+                        className="btn btn-danger btn-inline ms-2"
                       >
                         <FontAwesomeIcon icon={faTrashCan} />
                       </button>
@@ -302,7 +302,7 @@ export default function CreateItemPage() {
                   </div>
                 ) : null}
                 {from ? (
-                  <div className="form-tem">
+                  <div className="form-item mb-1">
                     <br />
                     <label className="form-label" htmlFor="from">
                       {t("input-from")}
@@ -317,7 +317,7 @@ export default function CreateItemPage() {
                         onClick={() => {
                           setFrom(false);
                         }}
-                        className="btn btn-danger btn-inline"
+                        className="btn btn-danger btn-inline ms-2"
                       >
                         <FontAwesomeIcon icon={faTrashCan} />
                       </button>
@@ -325,7 +325,7 @@ export default function CreateItemPage() {
                   </div>
                 ) : null}
                 {link ? (
-                  <div className="form-tem">
+                  <div className="form-item mb-2">
                     <br />
                     <label className="form-label" htmlFor="link">
                       {t("input-link")}
@@ -340,7 +340,7 @@ export default function CreateItemPage() {
                         onClick={() => {
                           setLink(false);
                         }}
-                        className="btn btn-danger btn-inline"
+                        className="btn btn-danger btn-inline ms-2"
                       >
                         <FontAwesomeIcon icon={faTrashCan} />
                       </button>

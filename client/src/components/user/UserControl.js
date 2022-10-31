@@ -4,10 +4,12 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical, faStar } 
   from "@fortawesome/free-solid-svg-icons";
+  import { useNavigate } from "react-router-dom";
+
 
 export default function UserControls(props) {
   const { t } = useTranslation();
-
+  const navigate = useNavigate();
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   function refresh() {
     props.onReload();
@@ -27,7 +29,19 @@ export default function UserControls(props) {
     localStorage.setItem("user", JSON.stringify(user.data));
 
   }
-
+  async function deleteUser() {
+    let confirmDelete = window.confirm(
+      'Delete user "' + props.user.name + '"?'
+    );
+    if (confirmDelete) {
+      axios.delete(`/user/${props.user._id}/delete`);
+      setTimeout(() => {
+        navigate('/signup')
+      }, 1000)
+    } else {
+      return false;
+    }
+  }
   return (
     <Dropdown>
       <Dropdown.Toggle
@@ -58,7 +72,8 @@ export default function UserControls(props) {
           </Dropdown.Item>
         )}
 
-        <Dropdown.Item className="delete-control">
+        <Dropdown.Item className="delete-control"
+          onClick={deleteUser}>
           {t("delete-user")}
         </Dropdown.Item>
       </Dropdown.Menu>

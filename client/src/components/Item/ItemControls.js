@@ -13,7 +13,9 @@ export default function ItemControls(props) {
     if (confirmDelete) {
       console.log(props.item);
       axios.delete(`item/delete/${props.item._id}`);
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000)
     } else {
       return false;
     }

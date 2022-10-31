@@ -1,6 +1,38 @@
 {
+  "_comment": "=================HomePage.js translations=================",
 
-  "comment-itemjs": "================Item.js translations================",
+  "welcome": "Добро пожаловать, ",
+  "lets-see-whats-over-there": "Посмотрим что тут новенького!",
+  "items": "Предметы",
+  "collections": "Коллекции",
+  "load-more": "Загрузить еще",
+
+  "_comment1": "================CollectionControls.js translations=============",
+
+  "add-to-collection": "Добавить предмет",
+  "edit-collection": "Изменить коллекцию",
+  "delete-collection": "Удалить коллекцию",
+
+  "_comment3": "================ItemControls.js translations============",
+
+  "edit-item": "Изменить предмет",
+  "delete-item": "Удалить предмет",
+
+  "_comment4": "================ItemControls.js translations============",
+  "modal-close": "Закрыть",
+
+  "_comment5": "================UserControls.js translations================",
+  "make-admin": "Сделать Админом",
+  "remove-admin": "Убрать статус Админа",
+  "delete-user": "Удалить пользователя",
+
+  "_comment6": "================Collection.js translations================",
+  "col-description": "Описание",
+  "col-num-items": "Количество предметов",
+  "col-items": "",
+  "col-item-list": "Список предметов",
+
+  "_comment7": "================Item.js translations================",
   "i-description": "Описание",
   "i-no-description": "Нет описания",
   "i-price": "Цена",
@@ -14,45 +46,7 @@
   "i-no-comments": "Нет комментариев",
   "i-type-comment": "Напишите комментарий тут...",
 
-  "comment-itemcontrols": "================ItemControls.js translations============",
-  "edit-item": "Изменить предмет",
-  "delete-item": "Удалить предмет",
-
-  "comment-profilepage": "================ProfilePage.js translations============",
-  "collections": "Коллекции",
-  "go-back": "Назад",
-
-  "comment-login": "================LoginPage.js translations================",
-  "login-title": "Войти",
-  "login-dont-have-account": "У вас нет аккаунта?",
-  "login-signup": "Создать аккаунт",
-  "login-email": "Имейл",
-  "login-password": "Пароль",
-  "login-submit": "Отправить",
-  "login-username-validation": "Введите имейл, пожалуйста.",
-  "login-password-length": "Пароль не может быть короче 4-х символов.",
-
-  "not-found": "================NotFound.js translations================",
-  "404-oops": "Упс!",
-  "404-no-page": "Страницы с таким адресом не существует.",
-
-  "comment-signup": "================SignupPage.js translations================",
-  "edit-user": "Изменить пользователя",
-  "signup-user-exists": "Пользователь с таким имейлом уже существует.",
-  "signpu-created": "Пользователь успешно создан.",
-  "signup-failed": "Пожалуйста, проверьте введенные данные.",
-  "signup-title": "Создать аккаунт",
-  "signup-have-account": "У вас есть аккаунт?",
-  "signup-login": "Войти",
-  "signup-name": "Имя",
-  "signup-lastname": "Фамилия",
-  "signup-username": "Юзернейм",
-  "signup-email": "Имейл",
-  "signup-password": "Пароль",
-  "signup-submit": "Отправить",
-  "signup-redirect": "Пользователь уже существует. Вы будете перенаправлены на страницу входа.",
-
-  "comment-nav": "================Navigation.js translations================",
+  "_comment8": "================Navigation.js translations================",
   "nav-home": "Главная",
   "nav-account": "Аккаунт",
   "nav-login": "Войти",
@@ -61,18 +55,7 @@
   "nav-profile": "Профиль",
   "nav-search": "Поиск",
 
-  "about-start": "Announce — это платформа, специально разработанная для продажи ваших товаров.Вы также можете купить продукты, которые вам нравятся.С Announce все просто!",
-  "start-divein": "Давайте начнем!",
-
-  "col-description": "Описание",
-  "col-num-items": "Количество предметов",
-  "col-items": "",
-  "col-item-list": "Список предметов",
-  "add-to-collection": "Добавить предмет",
-  "edit-collection": "Изменить коллекцию",
-  "delete-collection": "Удалить коллекцию",
-
-  "comment-user": "================User.js translations================",
+  "_comment9": "================User.js translations================",
   "user-profile": "Профиль",
   "user-name": "Имя",
   "user-lastname": "Фамилия",
@@ -81,14 +64,14 @@
   "user-status": "Статус",
   "user-loading": "Загрузка...",
   "user-newcol": "Новая коллекция",
-  "make-admin": "Сделать Админом",
-  "remove-admin": "Убрать статус Админа",
-  "delete-user": "Удалить пользователя",
 
+  "_comment10": "================CollectionItems.js translations================",
+  "goback": "Назад",
   "create-col-for": "Создать коллекцию для",
   "col-title": "Название",
   "col-create": "Создать",
 
+  "_comment11": "================CreateItem.js translations================",
   "input-addmoreinput": "Добавить больше полей",
   "input-price": "Цена",
   "input-year": "Год",
@@ -104,19 +87,57 @@
   "input-addtag": "Добавить тэг",
   "input-submit": "Отправить",
 
-  "welcome": "Добро пожаловать, ",
-  "lets-see-whats-over-there": "Посмотрим что тут новенького!",
-  "items": "Предметы",
-  "load-more": "Загрузить еще",
+  "_comment12": "================LoginPage.js translations================",
+  "login-title": "Войти",
+  "login-dont-have-account": "У вас нет аккаунта?",
+  "login-signup": "Создать аккаунт",
+  "login-email": "Имейл",
+  "login-password": "Пароль",
+  "login-submit": "Отправить",
+  "login-username-validation": "Введите имейл, пожалуйста.",
+  "login-password-length": "Пароль не может быть короче 4-х символов.",
 
+  "_comment14": "================NotFound.js translations================",
+  "404-oops": "Упс!",
+  "404-no-page": "Страницы с таким адресом не существует.",
+
+  "_comment15": "================SignupPage.js translations================",
+  "edit-user": "Изменить пользователя",
+  "signup-user-exists": "Пользователь с таким имейлом уже существует.",
+  "signpu-created": "Пользователь успешно создан.",
+  "signup-failed": "Пожалуйста, проверьте введенные данные.",
+  "signup-title": "Создать аккаунт",
+  "signup-have-account": "У вас есть аккаунт?",
+  "signup-login": "Войти",
+  "signup-name": "Имя",
+  "signup-lastname": "Фамилия",
+  "signup-username": "Юзернейм",
+  "signup-email": "Имейл",
+  "signup-password": "Пароль",
+  "signup-submit": "Отправить",
+  "signup-redirect": "Пользователь уже существует. Вы будете перенаправлены на страницу входа.",
+
+  "_comment16": "================StartPage.js translations================",
+  "about-start": "Announce — это платформа, специально разработанная для продажи ваших товаров.Вы также можете купить продукты, которые вам нравятся.С Announce все просто!",
+  "start-divein": "Давайте начнем!",
+
+  "_comment17": "================UpdateCollectionPage.js translations================",
   "update-col-for": "Изменить коллекцию",
   "update-col-title": "Название",
   "update-col-description": "Описание",
   "update-col-update": "Обновить",
 
+  "_comment18": "================UpdateItemPage.js translations================",
   "uitem-failed": "Что-то пошло не так. Пожалуйста, попробуйте еще раз.",
   "uitem-tag-fail": "Поле Тэга не может быть пустым.",
   "uitem-edit": "Изменить предмет",
   "uitem-update": "Обновить",
-  "userpage-title": "Профиль пользователя"
-} 
+
+  "_comment19": "================UserPage.js translations================",
+  "userpage-title": "Профиль пользователя",
+
+  "_comment20": "================TagSearch.js translations================",
+  "tag-title": "Поиск предметов по тэгу",
+  "tag-fail": "Что-то пошло не так, попробуйте еще раз.",
+  "tag-empty": "По вашему запросу ничего не найдено."
+}

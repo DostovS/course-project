@@ -42,6 +42,9 @@ export default function Item(props) {
     props.refresh();
     setLiked(true);
     setLikeLoading(false);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
   function unlikeItem() {
     setLikeLoading(true);
@@ -49,6 +52,9 @@ export default function Item(props) {
     props.refresh();
     setLiked(false);
     setLikeLoading(false);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
   const sendComment = async () => {
     setCommentLoading(true);
@@ -69,6 +75,9 @@ export default function Item(props) {
       return false;
     }
     setCommentLoading(false);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
   const getDate = (date) => {
     const date1 = new Date(date);
@@ -82,13 +91,13 @@ export default function Item(props) {
     <>
       <BaseCard>
         <div className="item">
-          <div className="control">
-            <FontAwesomeIcon icon={faCookie} className="cookie" />
-            {props.item.username === currentUser.username ||
+          {props.item.username === currentUser.username ||
             currentUser.role === "admin" ? (
+            <div className="control d-flex">
+              <FontAwesomeIcon icon={faCookie} className="cookie" />
               <ItemControls className="item-control" item={props.item} />
-            ) : null}
-          </div>
+            </div>
+          ) : null}
           <div className="flexcontainer">
             <div className="image">
               {props.item.image === "" ? (
@@ -147,7 +156,7 @@ export default function Item(props) {
             </div>
           </div>
           <div className="likes">
-            <div className="like mt-1">
+            <div className="like mt-1 mb-2">
               {liked && !likeLoading ? (
                 <FontAwesomeIcon
                   icon={faHeart}
@@ -226,7 +235,7 @@ export default function Item(props) {
                     }}
                   />
                   <button
-                    className="btn btn-primary btn-inline"
+                    className="btn btn-primary btn-inline ms-2"
                     onClick={sendComment}
                   >
                     <FontAwesomeIcon icon={faPaperPlane} />
