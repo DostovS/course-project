@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 import axios from "../plugins/axios";
 import User from "../components/user/User";
 import Collection from "../components/Collection/Collection";
 import Loader from "../components/UI/Loader";
 
 export default function ProfilePage() {
+  const { t } = useTranslation();
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const [user, setUser] = useState({});
   const [collections, setCollections] = useState([]);
@@ -39,22 +41,21 @@ export default function ProfilePage() {
 
   return (
     <>
-    <div>
-       <Link to="" className="link-back" 
-        onClick={() => navigate(-1)}>
+      <div>
+        <Link to="" className="link-back" 
+          onClick={() => navigate(-1)}>
           <FontAwesomeIcon icon={faLeftLong} /> 
-          Go back
-      </Link>
+          {t("goback")}
+        </Link>
         <User username={currentUser.username} />
-        <h2 className="page-title">
-          Collections
-        </h2>
-        {collections.length === 0 ? <Loader /> : null}
-        {collections.map((col) => (
-          <Collection collection={col} key={col._id} />
-        ))}     
-    </div>
-
+      </div>
+      <h2 className="page-title">
+        {t("collections")}
+      </h2>
+      {collections.length === 0 ? <Loader /> : null}
+      {collections.map((col) => (
+        <Collection collection={col} key={col._id} />
+      ))}     
     </>
   );
 }

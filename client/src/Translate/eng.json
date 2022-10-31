@@ -55,5 +55,9 @@
 
   "comment-itemcontrols": "================ItemControls.js translations============",
   "edit-item": "Edit item",
-  "delete-item": "Delete item"
+  "delete-item": "Delete item",
+
+  "comment-profilepage": "================ProfilePage.js translations============",
+  "collections": "collections",
+  "go-back": "Go Back"
 }
