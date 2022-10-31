@@ -100,7 +100,7 @@ export default function SignupPage() {
           <input
             type="text"
             className="form-control input"
-            placeholder="@username"
+            placeholder="username"
             ref={inputUsername}
             required
           />

@@ -1,12 +1,18 @@
-import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
+import { 
+  Link, 
+  useParams, 
+  useNavigate 
+} from "react-router-dom";
+import axios from "../plugins/axios";
+import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
 import BaseCard from "../components/UI/BaseCard/BaseCard";
-import { useState } from "react";
-import axios from "../plugins/axios";
 import Loader from "../components/UI/Loader";
+
 export default function CreateCollection() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   let { username } = useParams();
   const [dataUploading, setDataUploading] = useState(false);
@@ -27,26 +33,26 @@ export default function CreateCollection() {
   };
 
   return (
-    <div className="container">
+    <>
       <Link to="" className="link-back" onClick={() => navigate(-1)}>
-        <FontAwesomeIcon icon={faLeftLong} /> Go Back
+        <FontAwesomeIcon icon={faLeftLong} /> {t("goback")}
       </Link>
-{dataUploading ? (
+      {dataUploading ? (
         <Loader />
       ) : (
         <BaseCard>
           <form>
             <h2>
-              Create Collection for{" "}
+              {t("create-col-for")}{" "}
               <Link to={`/user/${username}`}>@{username}</Link>
             </h2>
             <div className="form-item">
               <br />
               <label className="form-label" htmlFor="title">
-                Title:
+                {t("col-title")}:
               </label>
               <input
-                className="form-control"
+                className="form-control input"
                 type="text"
                 required
                 onChange={(e) => {
@@ -57,10 +63,10 @@ export default function CreateCollection() {
             <div className="form-item">
               <br />
               <label className="form-label" htmlFor="description">
-                Description:
+                {t("col-description")}:
               </label>
               <input
-                className="form-control"
+                className="form-control input"
                 type="text"
                 required
                 onChange={(e) => {
@@ -69,12 +75,15 @@ export default function CreateCollection() {
               />
             </div>
             <br />
-            <button className="btn btn-primary btn-submit" onClick={handleSubmit}>
-              Create
+            <button
+              className="btn btn-primary btn-submit"
+              onClick={handleSubmit}
+            >
+              {t("col-create")}
             </button>
           </form>
         </BaseCard>
       )}
-    </div>
+    </>
   );
 }

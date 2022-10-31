@@ -1,6 +1,5 @@
-import React from 'react'
-import axios from "../../plugins/axios";
 import Dropdown from "react-bootstrap/Dropdown";
+import axios from "../../plugins/axios";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
@@ -29,6 +28,7 @@ export default function ItemControls(props) {
       >
         <FontAwesomeIcon icon={faEllipsisVertical} />
       </Dropdown.Toggle>
+
       <Dropdown.Menu>
         <Dropdown.Item href={`/item/edit/${props.item._id}`}>
           {t("edit-item")}

@@ -1,20 +1,20 @@
-import BaseCard from "../components/UI/BaseCard/BaseCard";
-import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { storage } from "../firebase";
 import { ref, uploadBytes } from "firebase/storage";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 import axios from "../plugins/axios";
 import Loader from "../components/UI/Loader";
-import { useEffect } from "react";
+import BaseCard from "../components/UI/BaseCard/BaseCard";
 
 export default function UpdateItemPage(props) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   let { id } = useParams();
 
   const [dataUploading, setDataUploading] = useState(false);
@@ -38,17 +38,6 @@ export default function UpdateItemPage(props) {
   const [from, setFrom] = useState("");
   const [link, setLink] = useState("");
   const [tag, setTag] = useState("");
-
-  //   const [tag, setTag] = useState("");
-
-  //   const nameRef = useRef("");
-  //   const descriptionRef = useRef(null);
-  //   const [priceRef, setPriceRef] = useState("");
-  //   const [yearRef, setYearRef] = useState("");
-  //   const [fromRef, setFromRef] = useState("");
-  //   const [linkRef, setLinkRef] = useState("");
-  //   const tagInput = useRef("");
-
   const [retrievedImageLink, setRetrievedImageLink] = useState("");
   const imageTitle = v4();
 
@@ -77,10 +66,10 @@ export default function UpdateItemPage(props) {
     getItem();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     setDataUploading(true);
-
     let image = "";
     if (imageUpload) image = imageTitle;
     if (!imageUpload) image = retrievedImageLink;
@@ -98,7 +87,6 @@ export default function UpdateItemPage(props) {
         link: link ? link : "",
         customInputs: "",
       };
-
       await axios.put(`item/update/${id}`, data).then(() => {
         //Upload Image
         const uploadImage = (e) => {
@@ -109,28 +97,31 @@ export default function UpdateItemPage(props) {
             //   alert("Image Uploaded Successfuly");
             setUploadStatus(true);
             setImageUpload(null);
+            window.location.href = `/collection/items/${collectionID}`;
           });
         };
         uploadImage();
       });
       if (imageUpload == null) {
         window.location.href = `/user/${username}/${collectionID}`;
-      }    } catch (err) {
-      alert("Something went wrong");
+      }
+    } catch (err) {
+      alert(t("uitem-failed"));
       console.error(err);
+
       return false;
     }
   };
   function addTag(e) {
     e.preventDefault();
     if (tag === "") {
-      alert("Tag Field cannot be empty! Please, check your input");
+      alert(t("uitem-tag-fail"));
       return false;
     }
     setTag("");
     tags.push({
       id: v4(),
-      tag: tag,
+      tag: tag.toLowerCase(),
     });
     tag.current.value = "";
     console.log(tags);
@@ -139,11 +130,12 @@ export default function UpdateItemPage(props) {
   function removeTag(id) {
     setTags(tags.filter((tag) => tag.id !== id));
   }
+
   const additionalFields = (
     <div>
       <br />
       <br />
-      <h3>Add more inputs</h3>
+      <h3>{t("input-addmoreinput")}</h3>
       {!priceState ? (
         <span
           className="btn-secondary btn btn-sm btn-additional-fields"
@@ -151,7 +143,7 @@ export default function UpdateItemPage(props) {
             setPriceState(true);
           }}
         >
-          Price
+          {t("input-price")}
         </span>
       ) : null}
       {!yearState ? (
@@ -161,9 +153,9 @@ export default function UpdateItemPage(props) {
             setYearState(true);
           }}
         >
-          Year
+          {t("input-year")}
         </span>
-      ) : null}(
+      ) : null}
       {!fromState ? (
         <span
           className="btn-secondary btn btn-sm btn-additional-fields"
@@ -171,7 +163,7 @@ export default function UpdateItemPage(props) {
             setFromState(true);
           }}
         >
-          From
+          {t("input-from")}
         </span>
       ) : null}
       {!linkState ? (
@@ -181,13 +173,14 @@ export default function UpdateItemPage(props) {
             setLinkState(true);
           }}
         >
-          Link
+          {t("input-link")}
         </span>
       ) : null}
       <br />
       <br />
     </div>
   );
+
   return (
     <>
       {dataUploading ? (
@@ -195,7 +188,7 @@ export default function UpdateItemPage(props) {
       ) : (
         <div>
           <Link to="" className="link-back" onClick={() => navigate(-1)}>
-            <FontAwesomeIcon icon={faLeftLong} /> Go Back
+            <FontAwesomeIcon icon={faLeftLong} /> {t("goback")}
           </Link>
           <BaseCard>
             <form
@@ -203,14 +196,14 @@ export default function UpdateItemPage(props) {
                 handleUpdate(e);
               }}
             >
-              <h2>Edit Item</h2>
+              <h2>{t("uitem-edit")}</h2>
               <div className="form-item">
                 <br />
                 <label className="form-label" htmlFor="name" required>
-                  Name
+                  {t("input-name")}
                 </label>
                 <input
-                  className="form-control"
+                  className="form-control input"
                   type="text"
                   onChange={(e) => {
                     setName(e.target.value);
@@ -221,12 +214,12 @@ export default function UpdateItemPage(props) {
               <div className="form-item">
                 <br />
                 <label className="form-label" htmlFor="description">
-                  Description
+                  {t("input-description")}
                 </label>
                 <textarea
                   name="description"
                   rows="3"
-                  className="form-control"
+                  className="form-control input"
                   onChange={(e) => {
                     setDescription(e.target.value);
                   }}
@@ -236,11 +229,11 @@ export default function UpdateItemPage(props) {
               <div className="form-item">
                 <br />
                 <label className="form-label" htmlFor="image">
-                  Image
+                  {t("input-image")}
                 </label>
                 <div className="">
                   <input
-                    className="form-control"
+                    className="form-control input"
                     type="file"
                     onChange={(event) => {
                       if (uploadStatus) event.target.files[0] = null;
@@ -251,11 +244,11 @@ export default function UpdateItemPage(props) {
                 <div className="form-item">
                   <br />
                   <label className="form-label" htmlFor="title" required>
-                    Tags
+                    {t("input-tags")}
                   </label>
                   <div className="d-flex justify-content-between">
                     <input
-                      className="form-control input-inline"
+                      className="form-control input input-inline"
                       type="text"
                       value={tag}
                       onChange={(e) => setTag(e.target.value)}
@@ -266,7 +259,7 @@ export default function UpdateItemPage(props) {
                         addTag(e);
                       }}
                     >
-                      Add tag
+                      {t("input-addtag")}
                     </button>
                   </div>
                 </div>
@@ -293,11 +286,11 @@ export default function UpdateItemPage(props) {
                   <div className="form-tem">
                     <br />
                     <label className="form-label" htmlFor="price">
-                      Price
+                      {t("input-price")}
                     </label>
                     <div className="d-flex justify-content-between">
                       <input
-                        className="form-control input-inline"
+                        className="form-control input input-inline"
                         type="text"
                         onChange={(e) => {
                           setPrice(e.target.value);
@@ -319,11 +312,11 @@ export default function UpdateItemPage(props) {
                   <div className="form-tem">
                     <br />
                     <label className="form-label" htmlFor="year">
-                      Year
+                      {t("input-year")}
                     </label>
                     <div className="d-flex justify-content-between">
                       <input
-                        className="form-control input-inline"
+                        className="form-control input input-inline"
                         type="text"
                         onChange={(e) => {
                           setYear(e.target.value);
@@ -345,11 +338,11 @@ export default function UpdateItemPage(props) {
                   <div className="form-tem">
                     <br />
                     <label className="form-label" htmlFor="from">
-                      From (Place)
+                      {t("input-from")}
                     </label>
                     <div className="d-flex justify-content-between">
                       <input
-                        className="form-control input-inline"
+                        className="form-control input input-inline"
                         type="text"
                         onChange={(e) => {
                           setFrom(e.target.value);
@@ -371,11 +364,11 @@ export default function UpdateItemPage(props) {
                   <div className="form-tem">
                     <br />
                     <label className="form-label" htmlFor="link">
-                      Link to website
+                      {t("input-link")}
                     </label>
                     <div className="d-flex justify-content-between">
                       <input
-                        className="form-control input-inline"
+                        className="form-control input input-inline"
                         type="text"
                         onChange={(e) => {
                           setLink(e.target.value);
@@ -395,7 +388,7 @@ export default function UpdateItemPage(props) {
                 ) : null}
               </div>
               <button className="btn btn-success btn-submit" type="submit">
-                Update
+                {t("uitem-update")}
               </button>
             </form>
           </BaseCard>

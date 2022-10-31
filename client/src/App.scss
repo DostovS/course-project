@@ -24,7 +24,9 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #084d18;
 }
-
+img {
+  object-fit: cover;
+}
 button {
   margin: 0.5rem 0;
 }
@@ -60,7 +62,11 @@ ul {
   text-decoration: none;
 }
 table {
-  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 1rem;
+  td {
+    padding: .3rem;
+  }
 }
 .page-title {
   margin: 1rem 0 0 0;
@@ -96,7 +102,7 @@ a {
   animation: spin infinite 0.8s;
 }
 .loading {
-  margin: auto;
+  text-align: center;
 }
 
 .input-inline {

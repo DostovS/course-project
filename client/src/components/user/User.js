@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 import UserControls from "./UserControl";
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+
 export default function User(props) {
   const { t } = useTranslation();
   const [user, setUser] = useState({});
@@ -54,23 +55,23 @@ export default function User(props) {
         <table>
           <tbody>
             <tr>
-              <td>Name: </td>
+              <td>{t("user-name")}: </td>
               <td>{user.name}</td>
             </tr>
             <tr>
-              <td>Lastname: </td>
+              <td>{t("user-lastname")}: </td>
               <td>{user.lastName}</td>
             </tr>
             <tr>
-              <td>Username: </td>
+              <td>{t("user-username")}: </td>
               <td>{user.username}</td>
             </tr>
             <tr>
-              <td>Email: </td>
+              <td>{t("user-email")}: </td>
               <td>{user.email}</td>
             </tr>
             <tr>
-              <td>User Status: </td>
+              <td>{t("user-status")}: </td>
               <td>
                 {statusLoading && (
                   <div className="spinner-border text-primary" role="status">
@@ -97,12 +98,16 @@ export default function User(props) {
             </tr>
           </tbody>
         </table>
-        <Link
-          to={`/collection/create/${user.username}`}
-          className="btn btn-success"
-        >
-          Create Collection
-        </Link>
+        {user.username === currentUser.username ||
+            currentUser.role === "admin" ? (
+              <Link
+                to={`/collection/create/${user.username}`}
+                className="btn btn-success"
+                style={{width: '100%'}}
+              >
+                {t("user-newcol")}
+              </Link>
+          ) : null}
       </BaseCard>
   );
 }

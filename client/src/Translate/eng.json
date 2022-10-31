@@ -12,13 +12,12 @@
   "i-comments": "Comments",
   "i-no-comments": "No comments yet",
   "i-type-comment": "Type your comment here...",
-
-  "comment-itemcontrols": "================ItemControls.js translations============",
   "edit-item": "Edit item",
   "delete-item": "Delete item",
+  "comment-itemcontrols": "================ItemControls.js translations============",
 
   "comment-profilepage": "================ProfilePage.js translations============",
-  "collections": "collections",
+  "collections": "Collections",
   "go-back": "Go Back",
 
   "comment-login": "================LoginPage.js translations================",
@@ -70,5 +69,56 @@
 
   "add-to-collection": "Add Item",
   "edit-collection": "Edit collection",
-  "delete-collection": "Delete collection"
+  "delete-collection": "Delete collection",
+
+  "comment-user": "================User.js translations================",
+  "user-profile": "Profile",
+  "user-name": "Name",
+  "user-lastname": "Lastname",
+  "user-username": "Username",
+  "user-email": "Email",
+  "user-status": "Status",
+  "user-loading": "Loading...",
+  "user-newcol": "New Collection",
+
+  "make-admin": "Make admin",
+  "remove-admin": "Remove admin status",
+  "delete-user": "Delete user",
+
+  "create-col-for": "Create a collection for",
+  "col-title": "Title",
+  "col-create": "Create",
+
+  "input-addmoreinput": "Добавить больше полей",
+  "input-price": "Цена",
+  "input-year": "Год",
+  "input-from": "Страна",
+  "input-link": "Ссылка на сайт",
+  "input-goback": "Назад",
+  "input-create": "Создать предмет",
+  "input-name": "Название",
+  "input-description": "Описание",
+  "input-image": "Картинка",
+  "input-addimage": "Добавить картинку",
+  "input-tags": "Тэги",
+  "input-addtag": "Добавить тэг",
+  "input-submit": "Отправить",
+
+  "welcome": "Welcome, ",
+  "lets-see-whats-over-there": "Let's see what's new over there!",
+  "items": "Items",
+  "load-more": "Load more",
+
+  "update-col-for": "Update collection of",
+  "update-col-title": "Title",
+  "update-col-description": "Description",
+  "update-col-update": "Update",
+
+  "uitem-failed": "Something went wrong. Please, check inputs.",
+  "uitem-tag-fail": "Tag Field cannot be empty! Please, check your input",
+  "uitem-edit": "Edit Item",
+  "uitem-update": "Update",
+  "userpage-title": "User Profile"
+
+  
 }
