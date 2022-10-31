@@ -12,20 +12,18 @@ export default function StartPage() {
   return (
     <Zoom>
       <section className='start-page'>
-        <div className="container">
-          <div className="start-row">
-            <div className="start-content">
-              <h1 className='fw-bold'>ANNOUNCE</h1>
-              <p>
-                {t("about")}
-              </p>
-              <Link to="/login"  className="btn btn-primary">
-                {t("getstart")}
-              </Link>
-            </div>
-            <div className="start-img">
-              <img src={LoudSpeaker} alt="loud speaker" />
-            </div>
+        <div className="start-row">
+          <div className="start-content">
+            <h1 className='fw-bold'>ANNOUNCE</h1>
+            <p>
+              {t("about-start")}
+            </p>
+            <Link to="/login"  className="btn btn-primary">
+              {t("start-divein")}
+            </Link>
+          </div>
+          <div className="start-img">
+            <img src={LoudSpeaker} alt="loud speaker" />
           </div>
         </div>
       </section>

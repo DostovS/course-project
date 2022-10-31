@@ -1,6 +1,4 @@
 {
-  "about": "Announce is a platform specifically designed for you to sell your items.You can also buy the products you like.Everything is easy with Announce!",
-
   "comment-itemjs": "================Item.js translations================",
   "i-description": "Description",
   "i-no-description": "No description",
@@ -60,5 +58,17 @@
   "nav-signup": "Sign up",
   "nav-logout": "Logout",
   "nav-profile": "Profile",
-  "nav-search": "Search"
+  "nav-search": "Search",
+
+  "about-start": "Announce is a platform specifically designed for you to sell your items.You can also buy the products you like.Everything is easy with Announce!",
+  "start-divein": "Let's dive in!",
+
+  "col-description": "Description",
+  "col-num-items": "Number of items",
+  "col-items": "items",
+  "col-item-list": "Item list",
+
+  "add-to-collection": "Add Item",
+  "edit-collection": "Edit collection",
+  "delete-collection": "Delete collection"
 }
