@@ -1,11 +1,11 @@
 import { createGlobalStyle} from "styled-components"
 export const GlobalStyles = createGlobalStyle`
-  body {
+  body, .input, .dropdown-item, .dropdown-menu {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
     transition: all 0.50s linear;
   }
-  #card {
+  #card, .comments {
     background: ${({ theme }) => theme.cardColor};
     color: ${({ theme }) => theme.cardText};
     border-color: ${({ theme }) => theme.cardBorder};

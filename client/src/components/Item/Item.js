@@ -254,7 +254,7 @@ export default function Item(props) {
             <ul className="list-group">
               {props.item.comments.map((comment) => {
                 return (
-                  <li className="list-group-item" key={comment.commentID}>
+                  <li className="list-group-item comments" key={comment.commentID}>
                     <div className="comment">
                       <div className="d-flex align-items-center">
                         <FontAwesomeIcon
