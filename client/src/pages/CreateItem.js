@@ -215,7 +215,7 @@ export default function CreateItemPage() {
                     }}
                   />
                 </div>
-                <div className="form-item">
+                <div className="form-item mb-2">
                   <br />
                   <label className="form-label" htmlFor="title" required>
                     {t("input-tags")}
@@ -256,7 +256,7 @@ export default function CreateItemPage() {
                 </div>
                 {!price || !year || !from || !link ? additionalFields : null}
                 {price ? (
-                  <div className="form-item mb-1">
+                  <div className="form-item">
                     <br />
                     <label className="form-label" htmlFor="price">
                       {t("input-price")}
@@ -279,7 +279,7 @@ export default function CreateItemPage() {
                   </div>
                 ) : null}
                 {year ? (
-                  <div className="form-item mb-1">
+                  <div className="form-item">
                     <br />
                     <label className="form-label" htmlFor="year">
                       {t("input-year")}
@@ -302,7 +302,7 @@ export default function CreateItemPage() {
                   </div>
                 ) : null}
                 {from ? (
-                  <div className="form-item mb-1">
+                  <div className="form-item">
                     <br />
                     <label className="form-label" htmlFor="from">
                       {t("input-from")}
@@ -325,7 +325,7 @@ export default function CreateItemPage() {
                   </div>
                 ) : null}
                 {link ? (
-                  <div className="form-item mb-2">
+                  <div className="form-item">
                     <br />
                     <label className="form-label" htmlFor="link">
                       {t("input-link")}
@@ -348,7 +348,7 @@ export default function CreateItemPage() {
                   </div>
                 ) : null}
               </div>
-              <button className="btn btn-success btn-submit" type="submit">
+              <button className="btn btn-success btn-submit mt-3" type="submit">
                 {t("input-submit")}
               </button>
             </form>

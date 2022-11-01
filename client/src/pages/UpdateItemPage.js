@@ -241,7 +241,7 @@ export default function UpdateItemPage(props) {
                     }}
                   />
                 </div>
-                <div className="form-item">
+                <div className="form-item mb-1">
                   <br />
                   <label className="form-label" htmlFor="title" required>
                     {t("input-tags")}
@@ -254,7 +254,7 @@ export default function UpdateItemPage(props) {
                       onChange={(e) => setTag(e.target.value)}
                     />
                     <button
-                      className="btn btn-secondary btn-inline"
+                      className="btn btn-secondary btn-inline ms-2"
                       onClick={(e) => {
                         addTag(e);
                       }}
@@ -283,7 +283,7 @@ export default function UpdateItemPage(props) {
                   ? additionalFields
                   : null}
                 {priceState ? (
-                  <div className="form-tem">
+                  <div className="form-item">
                     <br />
                     <label className="form-label" htmlFor="price">
                       {t("input-price")}
@@ -301,7 +301,7 @@ export default function UpdateItemPage(props) {
                         onClick={() => {
                           setPriceState(false);
                         }}
-                        className="btn btn-danger btn-inline"
+                        className="btn btn-danger btn-inline ms-2"
                       >
                         <FontAwesomeIcon icon={faTrashCan} />
                       </button>
@@ -309,7 +309,7 @@ export default function UpdateItemPage(props) {
                   </div>
                 ) : null}
                 {yearState ? (
-                  <div className="form-tem">
+                  <div className="form-item">
                     <br />
                     <label className="form-label" htmlFor="year">
                       {t("input-year")}
@@ -327,7 +327,7 @@ export default function UpdateItemPage(props) {
                         onClick={() => {
                           setYearState(false);
                         }}
-                        className="btn btn-danger btn-inline"
+                        className="btn btn-danger btn-inline ms-2"
                       >
                         <FontAwesomeIcon icon={faTrashCan} />
                       </button>
@@ -335,7 +335,7 @@ export default function UpdateItemPage(props) {
                   </div>
                 ) : null}
                 {fromState ? (
-                  <div className="form-tem">
+                  <div className="form-item">
                     <br />
                     <label className="form-label" htmlFor="from">
                       {t("input-from")}
@@ -353,7 +353,7 @@ export default function UpdateItemPage(props) {
                         onClick={() => {
                           setFromState(false);
                         }}
-                        className="btn btn-danger btn-inline"
+                        className="btn btn-danger btn-inline ms-2"
                       >
                         <FontAwesomeIcon icon={faTrashCan} />
                       </button>
@@ -361,7 +361,7 @@ export default function UpdateItemPage(props) {
                   </div>
                 ) : null}
                 {linkState ? (
-                  <div className="form-tem">
+                  <div className="form-item">
                     <br />
                     <label className="form-label" htmlFor="link">
                       {t("input-link")}
@@ -379,7 +379,7 @@ export default function UpdateItemPage(props) {
                         onClick={() => {
                           setLinkState(false);
                         }}
-                        className="btn btn-danger btn-inline"
+                        className="btn btn-danger btn-inline ms-2"
                       >
                         <FontAwesomeIcon icon={faTrashCan} />
                       </button>
@@ -387,7 +387,7 @@ export default function UpdateItemPage(props) {
                   </div>
                 ) : null}
               </div>
-              <button className="btn btn-success btn-submit" type="submit">
+              <button className="btn btn-success btn-submit mt-3" type="submit">
                 {t("uitem-update")}
               </button>
             </form>
