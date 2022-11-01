@@ -111,13 +111,16 @@ export default function Item(props) {
             </div>
             <div>
               <h3>{props.item.name}</h3>
-              <Link
+              <p>
+                {t("seller")}: {" "}
+                <Link
                 className="italic username"
                 to={`/user/${props.item.username}`}
-              >
-                @{props.item.username}
-              </Link>
-              <p>
+                >
+                  @{props.item.username}
+                </Link>
+              </p>
+              <p className="item-des"> 
                 {t("i-description")}:{" "}
                 {props.item.description.trim() === ""
                   ? t("i-no-description")

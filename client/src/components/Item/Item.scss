@@ -10,6 +10,12 @@
 .flexcontainer {
   width: 100%;
   margin: auto;
+  p {
+    margin-bottom: .5rem;
+  }
+  .item-des {
+    width: 70%;
+  }
   .image {
     margin: auto;
   }
@@ -28,10 +34,11 @@
   }
   .username {
     text-decoration: none;
-    color: rgb(0, 72, 226);
+    color: rgb(22, 91, 239);
   }
 }
 .likes {
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -89,6 +96,7 @@
       img {
         display: block;
         margin: 0 auto;
+        margin-bottom: .5rem;
       }
     }
   }

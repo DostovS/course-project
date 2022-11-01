@@ -36,7 +36,10 @@ export default function UserControls(props) {
     if (confirmDelete) {
       axios.delete(`/user/${props.user._id}/delete`);
       setTimeout(() => {
-        navigate('/signup')
+        localStorage.removeItem("token");
+        localStorage.removeItem("currentUser");
+        navigate('/')
+        window.location.reload();
       }, 1000)
     } else {
       return false;

@@ -33,6 +33,7 @@
   "col-item-list": "Список предметов",
 
   "_comment7": "================Item.js translations================",
+  "seller": "Продавец",
   "i-description": "Описание",
   "i-no-description": "Нет описания",
   "i-price": "Цена",

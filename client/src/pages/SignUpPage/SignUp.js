@@ -51,7 +51,6 @@ export default function SignupPage() {
     };
     try {
       await axios.post("user/registration", userData);
-      alert(t("signup-created"));
       const loginData = {
         email: enteredEmail,
         password: enteredPassword,

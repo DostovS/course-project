@@ -13,7 +13,9 @@ export default function CollectionControls(props) {
     );
     if (confirmDelete) {
       axios.delete(`delete/collection/${props.collection._id}`);
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     } else {
       return false;
     }
