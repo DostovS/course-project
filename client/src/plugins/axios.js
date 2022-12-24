@@ -1,5 +1,5 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://cw-backend-vc6k-qpv9h2eas-dostovs.vercel.app/api";
+axios.defaults.baseURL = "https://announce.onrender.com/api/";
 
 export default axios;
